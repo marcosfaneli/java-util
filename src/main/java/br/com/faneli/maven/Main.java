@@ -11,13 +11,7 @@ package br.com.faneli.maven;
  */
 public class Main {
 
-    public static void main(String args[]){
-        testarEnvioJson();
-    }
+    public static void main(String[] args) {
 
-    private static void testarEnvioJson() {
-        ClientRest service = new ClientRest();
-        Request request = new Request();
-        service.post(request);
     }
 }
