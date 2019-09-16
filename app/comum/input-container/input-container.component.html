@@ -1,0 +1,6 @@
+<div class="form-group" [class.has-error]="hasError()"
+                        [class.has-feedback]="hasError()">
+  <label class="control-label">{{label}}:<font color="#FF0000" *ngIf="obrigatorio">*</font></label>
+  <ng-content></ng-content>
+  <span class="help-block" *ngIf="hasError()"><small class="form-text">{{messagemErro()}}</small></span>
+</div>

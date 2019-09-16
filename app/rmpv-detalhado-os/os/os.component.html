@@ -1,0 +1,410 @@
+<app-loading [exibir]="carregando"></app-loading>
+<div *ngIf="!carregando" class="conteudo cadastro">
+  <form role="form" #f="ngForm" novalidate>
+    <nav class="nav nav-pills nav-fill position-nav">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a id="dados-principais-tab" href="#dados-principais" aria-controls="dados-principais" aria-selected="true"
+          class="nav-item nav-link active" data-toggle="tab" role="tab">
+          Dados principais
+        </a>
+        <a id="servicos-tab" href="#servicos" aria-controls="servicos" aria-selected="false" class="nav-item nav-link"
+          data-toggle="tab" role="tab">
+          Serviços
+        </a>
+        <a id="pecas-tab" href="#pecas" aria-controls="pecas" aria-selected="false" class="nav-item nav-link"
+          data-toggle="tab" role="tab">
+          Peças
+        </a>
+        <a id="execucao-tab" href="#execucao" aria-controls="execucao" aria-selected="false" class="nav-item nav-link"
+          data-toggle="tab" role="tab">
+          Execução
+        </a>
+        <a id="notas-tab" href="#notas" aria-controls="notas" aria-selected="false" class="nav-item nav-link"
+          data-toggle="tab" role="tab">
+          Notas
+        </a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div id="dados-principais" aria-labelledby="dados-principais-tab" class="tab-pane fade show active"
+        role="tabpanel">
+        <header class="titulo">Dados Principais</header>
+        <div class="container-fluid">
+          <!-- <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div> -->
+
+  <div class=" border border-info container-body">    
+          <div class="row row-padding">
+              <em class="fa fa-info-circle icon-color" aria-hidden="true"></em>
+            <h6><strong>Informação: </strong></h6>
+          </div>
+          <div>
+            <div class="row alinhamento-row">
+              <div class="col-4">
+                  <small class="stats-label head-item">Número O.S.:</small>
+                  <h4 class="font-size-information"> {{model.numero}} </h4>
+              </div>
+              <div class="col-4">
+                  <small class="stats-label head-item">Agendamento: </small>
+                  <h4 class="font-size-information"> {{model.numero_agendamento}} </h4>
+              </div>
+              <div class="col-4">
+                <small class="stats-label head-item">Status:</small>
+                <h4 class="font-size-information"> {{model.status}} </h4> 
+              </div>
+            </div>
+
+            <div class="row alinhamento-row">
+                <div class="col-3">
+                    <small class="stats-label head-item">Tipo Dealer:</small>
+                    <h4 class="font-size-information"> {{model.tipo_dealer}} </h4>
+                </div>
+                <div class="col-3">
+                    <small class="stats-label head-item">Tipo Fábrica: </small>
+                    <h4 class="font-size-information"> {{model.tipo_fabrica}} </h4>
+                </div>
+                <div class="col-3">
+                  <small class="stats-label head-item">Categoria:</small>
+                  <h4 class="font-size-information"> {{model.categoria}} </h4> 
+                </div>
+                <div class="col-3">
+                    <small class="stats-label head-item">Garantia:</small>
+                    <h5 class="font-size-information"> {{model.solicitacao_garantia}} </h5> 
+                  </div>
+              </div>
+          </div>
+<!-- 
+          <div class="row">
+            <app-text-box class="col-lg-3" label="Número O.S." name="numero" [(ngModel)]="model.numero" [ativo]="false">
+            </app-text-box>
+            <app-text-box class="col-lg-3" label="Número Agendamento" name="numeroAgendamento"
+              [(ngModel)]="model.numero_agendamento" [ativo]="false"></app-text-box>
+            <app-text-box class="col-lg-6" label="Status" name="status" [(ngModel)]="model.status" obrigatorio="false"
+              required placeholder="Status O.S..." [ativo]="false"></app-text-box>
+          </div> -->
+          <!-- <div class="row">
+            <app-text-box class="col-lg-2" label="Tipo Dealer" name="tipoDealer" [(ngModel)]="model.tipo_dealer"
+              obrigatorio="false" required placeholder="Tipo Dealer..." [ativo]="false"></app-text-box>
+            <app-text-box class="col-lg-2" label="Tipo Fábrica" name="tipoFabrica" [(ngModel)]="model.tipo_fabrica"
+              obrigatorio="false" required placeholder="Tipo Fábrica..." [ativo]="false"></app-text-box>
+            <app-dropdown-list class="col-lg-4" label="Categoria" name="categoria" [(ngModel)]="model.categoria"
+              obrigatorio="false" required [itens]="categorias" [ativo]="false"></app-dropdown-list>
+            <app-text-box class="col-lg-4" label="Solicitação Garantia" name="solicitacao"
+              [(ngModel)]="model.solicitacao_garantia" obrigatorio="false" required
+              placeholder="Número da Solicitação..." [ativo]="false"></app-text-box>
+          </div> -->
+          <div class="row">
+            <app-check-box class="col-3 font-size-tags" label="Retrabalho" name="retrabalho" [(ngModel)]="model.retrabalho"
+              [ativo]="false"></app-check-box>
+            <app-check-box class="col-3 font-size-tags" label="Expresso" name="expresso" [(ngModel)]="model.expresso"
+              [ativo]="false"></app-check-box>
+            <app-check-box class="col-3 font-size-tags" label="Imobilizado" name="imobilizado" [(ngModel)]="model.imobilizado"
+              [ativo]="false"></app-check-box>
+            <app-check-box class="col-3 font-size-tags" label="Complemento" name="complemento" [(ngModel)]="model.complemento"
+              [ativo]="false"></app-check-box>
+          </div>
+          <hr class="hr-color">
+          <div class="row row-padding">
+              <em class="fa fa-user   icon-color" aria-hidden="true"></em>
+              <h6><strong>Cliente: </strong></h6>
+          </div>
+
+          <div class="row alinhamento-row">
+              <div class="col-4 alinhamento-total">
+                  <small class="stats-label head-item">CNPJ/CPF:</small>
+                  <h4 class="font-size-information"> {{model.cliente.documento}} </h4>
+              </div>
+              <div class="col-8 alinhamento-total">
+                  <small class="stats-label head-item">Nome: </small>
+                  <h4 class="font-size-information"> {{model.cliente.nome}} </h4>
+              </div>
+          </div>
+     
+          <!-- <div class="row">
+            <app-text-box class="col-lg-3" label="CNPJ/CPF" name="clienteDocumento"
+              [(ngModel)]="model.cliente.documento" [ativo]="false"></app-text-box>
+            <app-text-box class="col-lg-9" label="Nome" name="clienteNome" [(ngModel)]="model.cliente.nome"
+              [ativo]="false"></app-text-box>
+          </div> -->
+          <hr class="hr-color">
+
+
+          <div class="row row-padding">
+              <em class="fa fa-user-circle-o  icon-color" aria-hidden="true"></em>
+             <h6><strong> Consultor: </strong></h6>
+          </div>
+          <div class="row alinhamento-row">
+              <div class="col-4 alinhamento-total">
+                  <small class="stats-label head-item">CPF Consultor:</small>
+                  <h4 class="font-size-information"> {{model.consultor.cpf}} </h4>
+              </div>
+              <div class="col-8 alinhamento-total">
+                  <small class="stats-label head-item">Nome: </small>
+                  <h4 class="font-size-information"> {{model.consultor.nome}} </h4>
+              </div>
+          </div>
+
+<!-- 
+          <div class="row">
+            <app-text-box class="col-lg-3" label="CPF Consultor" name="cpfConsultor" [(ngModel)]="model.consultor.cpf"
+              [ativo]="false"></app-text-box>
+            <app-text-box class="col-lg-9" label="Nome" name="consultorNome" [(ngModel)]="model.consultor.nome"
+              [ativo]="false"></app-text-box>
+          </div> -->
+          <hr class="hr-color">
+          <div class="row row-padding">
+            <em class="fa fa-usd icon-color" aria-hidden="true"></em>
+            <h6><strong>Valores serviço: </strong></h6>
+          </div>
+          <div class="row alinhamento-row">
+              <div class="col-4">
+                  <small class="stats-label head-item">Total:</small>
+                  <h4 class="font-size-information"> {{model.total_bruto_servicos}} </h4>
+              </div>
+              <div class="col-4">
+                  <small class="stats-label head-item">Desconto: </small>
+                  <h4 class="font-size-information"> {{model.desconto_servicos}} </h4>
+              </div>
+              <div class="col-4">
+                  <small class="stats-label head-item">Líquido: </small>
+                  <h4 class="font-size-information"> {{model.total_liquido_servicos}} </h4>
+              </div>
+          </div>
+
+<!-- 
+          <div class="row">
+            <app-text-box class="col-lg-3" label="Total" name="totalServicoBruto"
+              [(ngModel)]="model.total_bruto_servicos" [ativo]="false"></app-text-box>
+            <app-text-box class="col-lg-3" label="Desconto" name="totalServicoDesconto"
+              [(ngModel)]="model.desconto_servicos" [ativo]="false"></app-text-box>
+            <app-text-box class="col-lg-3" label="Líquido" name="totalServicoLiquido"
+              [(ngModel)]="model.total_liquido_servicos" required [ativo]="false"></app-text-box>
+          </div> -->
+
+
+          <div class="row row-padding">
+            <em class="fa fa-usd icon-color" aria-hidden="true"></em>
+            <h6><strong>Valores peça: </strong></h6>
+          </div>
+          <div class="row alinhamento-row">
+              <div class="col-4">
+                  <small class="stats-label head-item">Total:</small>
+                  <h4 class="font-size-information"> {{model.total_bruto_produtos}} </h4>
+              </div>
+              <div class="col-4">
+                  <small class="stats-label head-item">Desconto: </small>
+                  <h4 class="font-size-information"> {{model.desconto_produtos}} </h4>
+              </div>
+              <div class="col-4">
+                  <small class="stats-label head-item">Líquido: </small>
+                  <h4 class="font-size-information"> {{model.total_liquido_produtos}} </h4>
+              </div>
+          </div>
+
+          <!-- <div class="row">
+            <app-text-box class="col-lg-3" label="Total" name="totalProdutoBruto"
+              [(ngModel)]="model.total_bruto_produtos" [ativo]="false"></app-text-box>
+            <app-text-box class="col-lg-3" label="Desconto" name="totalProdutoDesconto"
+              [(ngModel)]="model.desconto_produtos" [ativo]="false"></app-text-box>
+            <app-text-box class="col-lg-3" label="Líquido" name="totalProdutoLiquido"
+              [(ngModel)]="model.total_liquido_produtos" required [ativo]="false"></app-text-box>
+          </div> -->
+          <div class="row row-padding">
+            <em class="fa fa-line-chart icon-color" aria-hidden="true"></em>
+            <h6><strong>Total: </strong></h6>
+          </div>
+          <div class="row alinhamento-row">
+              <div class="col-4">
+                  <small class="stats-label head-item">Total Bruto:</small>
+                  <h4 class="font-size-information"> {{model.total_bruto}} </h4>
+              </div>
+              <div class="col-4">
+                  <small class="stats-label head-item">Total Desconto: </small>
+                  <h4 class="font-size-information"> {{model.total_desconto}} </h4>
+              </div>
+              <div class="col-4">
+                  <small class="stats-label head-item">Total Líquido: </small>
+                  <h4 class="font-size-information"> {{model.total_liquido}} </h4>
+              </div>
+          </div>
+
+          <!-- <div class="row">
+            <app-text-box class="col-lg-3" label="Total Bruto" name="totalBruto" [(ngModel)]="model.total_bruto"
+              [ativo]="false"></app-text-box>
+            <app-text-box class="col-lg-3" label="Total Desconto" name="totalDesconto"
+              [(ngModel)]="model.total_desconto" [ativo]="false"></app-text-box>
+            <app-text-box class="col-lg-3" label="Total Líquido" name="totalLiquido" [(ngModel)]="model.total_liquido"
+              required [ativo]="false"></app-text-box>
+          </div> -->
+        </div>
+      </div>
+      </div>  
+      <div id="servicos" aria-labelledby="servicos-tab" class="tab-pane fade" role="tabpanel">
+        <header class="titulo">Serviços</header>
+        <div class="container-fluid">
+          <!-- <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div> -->
+  <div class=" border border-info container-body">       
+          <div *ngFor="let reclamacao of model.reclamacoes">
+            <div style="font-size: 10px; color: darkgrey">Reclamação</div>
+            <div style="font-size: 14px; color: rgb(85, 85, 85)"> 
+              <em class="fa fa-info-circle   icon-color" aria-hidden="true"></em>
+              {{reclamacao.descricao}}</div>
+            <div *ngIf="reclamacao.servicos.length > 0" class="row"
+              style="font-size: 12px; background-color: white; color: black; font-weight: bold; padding: 6px; margin: 0px 0px 6px 0px;">
+              <div class="col-sm-4">
+                Opções
+              </div>
+              <div class="col-sm-3">
+                Valor Padrão
+              </div>
+              <div class="col-sm-3">
+                Valor Cobrado
+              </div>
+            </div>
+            <div *ngFor="let servico of reclamacao.servicos">
+              <div class="row descricao-servico" style="font-size: 14px;">
+                <div class="col-sm-3">
+                  <strong>{{servico.codigo}}</strong>
+                </div>
+                <hr class="hr-color">
+                <div class="col-sm-9">
+                  <strong>{{servico.descricao}}</strong>
+                </div>
+                <hr class="hr-color">
+              </div>
+              <div class="row" style="font-size: 12px; margin: 0px 0px 0px 12px;">
+                <div class="col-sm-4">
+                  <input class="form-check-input" type="checkbox" name="topix" id="topix" [(ngModel)]="servico.topix"
+                    disabled>
+                  <label class="form-check-label" for="topix">
+                    Topix
+                  </label>
+                  <br>
+                  <input class="form-check-input" type="checkbox" name="evhc" id="evhc" [(ngModel)]="servico.evhc"
+                    disabled>
+                  <label class="form-check-label" for="evhc">
+                    E-Vhc
+                  </label>
+                  <br>
+                  <input class="form-check-input" type="checkbox" name="terceiro" id="terceiro"
+                    [(ngModel)]="servico.terceiro" disabled>
+                  <label class="form-check-label" for="terceiro">
+                    Terceiro
+                  </label>
+                </div>
+                <div class="col-sm-3">
+                  <strong>Valor:</strong> {{servico.valor_padrao}}<br>
+                  <strong>TMO:</strong> {{servico.tmo_padrao}}<br>
+                </div>
+                <div class="col-sm-3">
+                  <strong>Valor:</strong> {{servico.valor_cobrado}}<br>
+                  <strong>TMO:</strong> {{servico.tmo_cobrado}}<br>
+                  <strong>Desconto:</strong> {{servico.valor_desconto}}<br>
+                </div>
+              </div>
+              <hr class="hr-color">
+            </div>
+            <div *ngIf="reclamacao.servicos.length == 0" style="font-size: 12px;">
+              Não há serviço para esta reclamação
+            </div>
+          </div>
+  </div> 
+        </div>
+      </div>
+      <div id="pecas" aria-labelledby="pecas-tab" class="tab-pane fade" role="tabpanel">
+        <header class="titulo">Peças</header>
+        <div class="container-fluid">
+          <!-- <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div> -->
+     <div class=" border border-info container-body">       
+          <div>
+            <div *ngFor="let reclamacao of model.reclamacoes">
+              <div *ngFor="let servico of reclamacao.servicos">
+                <div *ngFor="let requisicao of servico.requisicoes">
+                  <div style="font-size: 10px; color: darkgrey">Requisição</div>
+                  <div style="font-size: 20px; color: rgb(85, 85, 85)">
+                    {{requisicao.numero}} &nbsp;&nbsp;
+                    <span style="font-size: 14px;">Data: {{requisicao.data}} </span>
+                  </div>
+                  <app-gridview [totalInterna]="false" [totalGeral]="false" [visualizarTotalRegistros]="false"
+                    [PaginaAtual]="paginaAtual" [QuantidadeRegistrosPagina]="quantidadeRegistrosPagina"
+                    [Paginacao]="listagemComPaginacao" [Estrutura]="estruturaPecas"
+                    [Dados]="carregarPecas(requisicao.pecas)" [EstruturaInterna]="estruturaInterna"
+                    [EstruturaTotal]="estruturaTotal" [total_registros]="total_registros"
+                    [ListagemComFiltros]="listagemComFiltros" (ver)="ver($event)" [visualizarTotalRegistros]="false"
+                    (mudarQuantidadePorPagina)="mudarQuantidadePorPagina($event)"
+                    (mudarPaginaAtual)="mudarPaginaAtual($event)">
+                  </app-gridview>
+                  <hr class="hr-color">
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>      
+
+        </div>
+      </div>
+      <div id="execucao" aria-labelledby="execucao-tab" class="tab-pane fade" role="tabpanel">
+        <header class="titulo">Execução</header>
+        <div class="container-fluid">
+          <!-- <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div> -->
+  <div class=" border border-info container-body">         
+          <div *ngFor="let reclamacao of model.reclamacoes">
+            <div *ngFor="let servico of reclamacao.servicos">
+              <div style="font-size: 10px; color: darkgrey">Serviço</div>
+              <div style="font-size: 20px; color: rgb(85, 85, 85)">{{servico.codigo}} &nbsp;
+                <span style="font-size: 14px; font-style: italic;">&nbsp;{{servico.descricao}}</span>
+              </div>
+              <app-gridview [totalInterna]="false" [totalGeral]="false" [visualizarTotalRegistros]="false"
+                [PaginaAtual]="paginaAtual" [QuantidadeRegistrosPagina]="quantidadeRegistrosPagina"
+                [Paginacao]="listagemComPaginacao" [Estrutura]="estruturaExecucao"
+                [Dados]="carregarExecucoes(servico.tempos_executados)" [EstruturaInterna]="estruturaInterna"
+                [EstruturaTotal]="estruturaTotal" [total_registros]="total_registros"
+                [ListagemComFiltros]="listagemComFiltros" (ver)="ver($event)" [visualizarTotalRegistros]="false"
+                (mudarQuantidadePorPagina)="mudarQuantidadePorPagina($event)"
+                (mudarPaginaAtual)="mudarPaginaAtual($event)">
+              </app-gridview>
+              <div *ngIf="servico.tempos_executados.length == 0" style="font-size: 12px;">
+                Não foi registrada execução
+              </div>
+            </div>
+          </div>
+  </div> 
+        </div>
+      </div>
+      <div id="notas" aria-labelledby="notas-tab" class="tab-pane fade" role="tabpanel">
+        <header class="titulo">Notas</header>
+        <div class="container-fluid">
+          <!-- <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div> -->
+    <div class=" border border-info container-body">       
+          <app-gridview [totalInterna]="false" [totalGeral]="false" [PaginaAtual]="paginaAtual"
+            [QuantidadeRegistrosPagina]="quantidadeRegistrosPagina" [Paginacao]="listagemComPaginacao"
+            [Estrutura]="estruturaNotas" [Dados]="notas" [EstruturaInterna]="estruturaInterna"
+            [EstruturaTotal]="estruturaTotal" [total_registros]="total_registros"
+            [ListagemComFiltros]="listagemComFiltros" (ver)="ver($event)" [visualizarTotalRegistros]="false"
+            (mudarQuantidadePorPagina)="mudarQuantidadePorPagina($event)" (mudarPaginaAtual)="mudarPaginaAtual($event)">
+          </app-gridview>
+    </div>      
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

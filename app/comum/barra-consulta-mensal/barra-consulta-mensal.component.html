@@ -1,0 +1,33 @@
+<div *ngIf="exibirBarraCor" style="background-color: rgb(0, 152, 223); height: 5px;"></div>
+<div class="botoes-filtros">
+  <div class="float-left">
+    <button type="button" class="btn  btn-danger" *ngIf="exibirBotaoVoltar" (click)="voltar();">
+      <em class="fa fa-reply" aria-hidden="true"></em> <!--   fa fa-chevron-left   -->
+    </button>
+    <button type="button" class="btn" [class.btn-info]="!listagemComFiltros" *ngIf="exibirBotaoDefinirFiltros"
+      [class.btn-warning]="listagemComFiltros" (click)="definirFiltragem();">
+      Definir Filtros
+      <em class="fa fa-filter"></em>
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="buscarRegistros();">
+      Buscar Dados
+      <em class="fa fa-search"></em>
+    </button> {{bloquearBotaoNovoCadastro}}
+  </div>
+  <div class="float-right">
+    <button *ngIf="detalhe" type="button" class="btn btn-info" (click)="detalhe.acao()" >
+      <em [ngClass]="detalhe.icone" class="fa fa-calendar" aria-hidden="true"></em>
+      {{detalhe.descricao}}
+    </button>
+    <button type="button" *ngIf="exibirNovo" class="btn btn-primary" (click)="criar();">
+      <em class="fa fa-plus"></em>
+      Novo
+    </button>
+    
+    <a class="btn btn-outline-info" *ngIf="exibirBotaoAjuda" href="http://ajuda.nbsi.com.br:84/" target="_blank">
+      <em class="fa fa-question"></em>
+      Ajuda
+    </a>
+  </div>
+  <div class="clear"></div>
+</div>

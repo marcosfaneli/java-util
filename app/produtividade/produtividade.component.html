@@ -1,0 +1,13 @@
+<div>
+   <app-loading [exibir]="carregando"></app-loading>
+      <div *ngIf="!carregando">           
+            <app-produtividade-filtro 
+                  [filtros]="filtros">
+            </app-produtividade-filtro>
+            <app-produtividade-lista 
+                  [filtros]="filtros" 
+                  (exibir)="selecionar($event)"  
+                  (definirFiltro)="definirFiltro()">
+            </app-produtividade-lista>
+      </div>
+</div>

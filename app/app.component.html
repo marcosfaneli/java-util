@@ -1,0 +1,46 @@
+<div class="wrapper">
+  <app-navegacao *ngIf="tratarLogado && logado" [menu]="itensMenu" style="height: 100%;"></app-navegacao>
+  <app-barra-notificacao *ngIf="tratarLogado && logado" style="height: 100%;"></app-barra-notificacao>
+  <div id="content">
+    <div *ngIf="tratarLogado && logado" id="titulo">
+      <div class="float-left">
+        <button 
+          type="button" 
+          appClickOutside 
+          (clickOutside)="desativaMenu()" 
+          class="btn btn-default"
+          (click)="toogleMenu();" 
+          id="sidebarCollapse">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+      <div class="float-left" style="margin: 12px 0px 0px 8px; font-weight: bold; color:rgb(121, 121, 121);">
+        Olá, {{getUser()}}
+      </div>
+      <div class="float-right">
+        <button type="button" class="btn btn-danger" routerLink="comunicado">
+          <div class="shaking">
+            <i class="fa fa-envelope-o "></i>
+          </div>
+        </button>
+        <button type="button" class="btn btn-success" routerLink="logout">
+          <i class="fa fa-sign-out"></i> Logout
+        </button>
+        <!-- <button type="button"  (clickOutside)="desativaNotificacao() || notificacao = true" class="btn btn-danger" (click)="toogleNotificacao() || notificacao = !notificacao;" > 
+            <div class="shaking">
+              <i class="fa fa-bell fa-3 "></i>
+            </div>
+          </button>
+          <button type="button" class="btn btn-success" routerLink="logout">
+            <i class="fa fa-sign-out"></i> Logout
+          </button> -->
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="barra-local" *ngIf="tratarLogado && logado">
+      <breadcrumb [allowBootstrap]="true"></breadcrumb>
+      <div class="clear"></div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

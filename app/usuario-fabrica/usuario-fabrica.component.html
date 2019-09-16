@@ -1,0 +1,15 @@
+<div *ngIf="selecionado">
+  <app-usuario-fabrica-cadastro
+    [model]="selecionado"
+    (buscar)="buscar($event)"
+    [state]="state">
+  </app-usuario-fabrica-cadastro>
+</div>
+<div *ngIf="!selecionado">
+  <app-usuario-fabrica-filtro [filtros]="filtros"></app-usuario-fabrica-filtro>
+  <app-usuario-fabrica-lista
+    [filtros]="filtros"
+    (exibir)="selecionar($event)"
+    (definirFiltro)="definirFiltro()">
+  </app-usuario-fabrica-lista>
+</div>

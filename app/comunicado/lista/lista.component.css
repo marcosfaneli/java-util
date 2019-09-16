@@ -1,0 +1,27 @@
+.date-align {
+    text-align: right;
+}
+
+.comunicado-item {
+     width: 280px; 
+    height: 80px;
+    margin: 2px 0px 2px 2%; 
+    padding: 1% 1% 1% 1%; 
+    color: #5c5b5b;
+    border: 0px solid #868686; 
+    background-color: white; 
+    z-index: 999;
+}
+
+.comunicado-item :hover { 
+   box-shadow: 3% #4b4a4a;
+}
+
+.comunicado-assunto {
+    width: 95%;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    margin: 0px 0px 4px 0px;
+}

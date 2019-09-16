@@ -1,0 +1,25 @@
+<div *ngIf="state === 0" style="background-color: rgb(21, 201, 201); height: 5px;"></div>
+<div *ngIf="state === 1" style="background-color: rgb(0, 177, 109); height: 5px;"></div>
+<div *ngIf="state === 2" style="background-color: rgb(222, 226, 0); height: 5px;"></div>
+<div style="background-color: #fff;">
+  <div class="btn-group btn-group-toggle barra" data-toggle="buttons">
+    <label *ngIf="!modoEdicao" class="btn btn-secondary" (click)="voltar()">
+        <em  class="fa fa-arrow-left"></em> Voltar
+    </label>
+    <label *ngIf="!modoEdicao && exibirNovo" class="btn btn-secondary" (click)="inserir()">
+        <em class="fa fa-plus"></em> Novo
+    </label>
+    <label *ngIf="modoEdicao" class="btn btn-secondary" (click)="salvar()">
+        <em  class="fa fa-save"></em> Salvar
+    </label>
+    <label *ngIf="!modoEdicao" class="btn btn-secondary" (click)="editar()">
+        <em  class="fa fa-pencil"></em> Editar
+    </label>
+    <label *ngIf="modoEdicao" class="btn btn-secondary"(click)="cancelar()">
+        <em  class="fa fa-ban"></em> Cancelar
+    </label>
+    <label *ngIf="!modoEdicao && exibirExcluir" class="btn btn-secondary" (click)="excluir()">
+        <em  class="fa fa-trash"></em> Excluir
+    </label>
+  </div>
+</div>

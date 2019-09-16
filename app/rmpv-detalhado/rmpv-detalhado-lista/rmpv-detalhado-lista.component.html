@@ -1,0 +1,44 @@
+<app-loading [exibir]="carregando"></app-loading>
+<div *ngIf="!carregando">
+  <div class="row" style="margin-bottom: 6px;">
+    <div class="col col-lg-3">
+      <div class="cartao pecas">
+        <div class="caption">Quantidade O.S.</div>
+        <div class="valor">
+          <ng2-odometer [number]="totais.quantidade" [config]="configShowNumber"></ng2-odometer>
+        </div>
+      </div>
+    </div>
+    <div class="col col-lg-3">
+      <div class="cartao acessorios">
+        <div class="caption">Valor Serviço (R$)</div>
+        <div class="valor">
+          <ng2-odometer [number]="totais.valor_servico" [config]="configShowNumber"></ng2-odometer>
+        </div>
+      </div>
+    </div>
+    <div class="col col-lg-3">
+      <div class="cartao sucesso">
+        <div class="caption">Valor Peça (R$)</div>
+        <div class="valor">
+          <ng2-odometer [number]="totais.valor_peca" [config]="configShowNumber"></ng2-odometer>
+        </div>
+      </div>
+    </div>
+    <div class="col col-lg-3">
+      <div class="cartao">
+        <div class="caption">Faturamento (R$)</div>
+        <div class="valor">
+          <ng2-odometer [number]="totais.faturamento" [config]="configShowNumber"></ng2-odometer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-gridview [ExibirBotaoDetalhes]="true" [ExibirBotaoDetalhesIcon]="exibirBotaoDetalhesIcon"
+    [NomeModulo]="nomeModulo" [totalInterna]="visualisarTotalInterna" [totalGeral]="visualisarTotalGeral"
+    [visualizarTotalRegistros]="true" [PaginaAtual]="paginaAtual"
+    [QuantidadeRegistrosPagina]="quantidadeRegistrosPagina" [Paginacao]="listagemComPaginacao" [Estrutura]="estrutura"
+    [Dados]="dados" [EstruturaInterna]="estruturaInterna" [EstruturaTotal]="estruturaTotal"
+    [total_registros]="total_registros" [ListagemComFiltros]="listagemComFiltros" (ver)="ver($event)"
+    (mudarQuantidadePorPagina)="mudarQuantidadePorPagina($event)" (mudarPaginaAtual)="mudarPaginaAtual($event)">
+  </app-gridview>

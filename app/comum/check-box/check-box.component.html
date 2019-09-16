@@ -1,0 +1,9 @@
+<div class="form-check">
+  <input class="form-check-input" [attr.disabled]="getAtivo()?null:'disableb'" #campo  type="checkbox" [(ngModel)]="value">
+  <label class="form-check-label">
+    {{label}}
+  </label>
+</div>
+<!-- <app-input-container [label]="label" [obrigatorio]="obrigatorio"> 
+  <input type="checkbox" [attr.disabled]="getAtivo()?null:'disableb'" #campo class="form-control form-control-sm" [name]="name" [(ngModel)]="value" />
+</app-input-container> -->

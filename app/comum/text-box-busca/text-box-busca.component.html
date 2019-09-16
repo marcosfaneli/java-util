@@ -1,0 +1,13 @@
+<app-input-container [label]="label" [obrigatorio]="obrigatorio">
+  <div class="input-group">
+    <input [maxlength]="maxLength" [attr.disabled]="getAtivo()" #campo type="text" class="form-control" [name]="name"
+      [(ngModel)]="value" [placeholder]="placeholder" autocomplete="false" />
+
+    <div class="input-group-append">
+      <button class="btn btn-default" [attr.disabled]="getAtivo()" type="button" (click)="buscarTextBox()">
+        <i class="fa fa-search"></i>
+        &nbsp; Buscar
+      </button>
+    </div>
+  </div>
+</app-input-container>

@@ -1,0 +1,16 @@
+<div class="fundo">
+  <div class="cabecalho">
+  </div>
+  <div class="col-md-auto principal">
+    <div>
+      <app-historico-filtro [filtros]="filtros"></app-historico-filtro>
+      <app-historico-lista [filtros]="filtros" (exibir)="selecionar($event)" (definirFiltro)="definirFiltro()">
+      </app-historico-lista>
+    </div>
+  </div>
+  <div class="col-md-auto mensagem">
+    <app-historico-cadastro [model]="selecionado" (buscar)="buscar($event)" [state]="state">
+    </app-historico-cadastro>
+  </div>
+</div>
+

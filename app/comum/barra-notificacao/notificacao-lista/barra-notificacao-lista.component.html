@@ -1,0 +1,49 @@
+<div class="row"  *ngFor="let item of dados">
+    <div class="col-sm-2">
+        <div class="notificacao-mensagem-icon color-historico espacamentoIcon">
+           <em class="fa fa-envelope-o color-novo"></em>
+        </div>
+    </div>
+    <div class="col-sm-2" data-toggle="collapse" [attr.data-target]="item.chave" aria-expanded="true" aria-controls="item.chave">
+      <div class="espacamento fontMensagem"  (click)="definirCollapse(item)">            
+        {{item.nomeDealer}}
+        </div> 
+        <div class="row espacamento" *ngIf="item.collapse">
+            <div class="fontMensagemDetalhe">
+               <strong> {{item.veiculoMarca}} </strong>
+            </div>  
+            <div class="fontMensagemDetalhe">
+                {{item.mensagem}}
+            </div>    
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!-- 
+<table>
+    <thead>
+        <tr *ngFor="let item of dados">
+            <td>
+             <div class="notificacao-mensagem-tipo" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div class="notificacao-mensagem-icon color-historico espacamentoIcon">
+                    <em class="fa fa-envelope-o color-novo"></em>
+                </div>
+            </div>    
+            </td>
+            <td>
+                <div class="espacamento fontMensagem">            
+                    {{item.nomeDealer}}
+                </div>
+                <div class="notificacao-show-box collapse fontMensagemDetalhe" id="collapseOne">               
+                    <tr>{{item.mensagem}}</tr>
+                </div>
+            </td>
+
+    </tr>
+    </thead>
+</table> -->
+

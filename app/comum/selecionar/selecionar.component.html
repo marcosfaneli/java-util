@@ -1,0 +1,7 @@
+<app-janela [idModal]="idModal" [titulo]="titulo">
+  <span  *ngFor="let item of lista">
+    <span class="btn btn-success btn-sm itemListaSelecao" style="font-size: 14px; margin: 2px;">{{item.toTexto()}}&nbsp;
+      <i class="fa fa-plus" (click)="escolher(item)"></i>
+    </span>
+  </span>
+</app-janela>

@@ -1,0 +1,21 @@
+.botoes-filtros {padding: 8px; background-color: #FFFFFF;}
+.botoes-filtros .btn {height: auto; font-size: 14px;}
+
+@media screen and (max-width: 450px) {
+    .botoes-filtros .btn em {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -0.5em;
+        width: 48px;
+    }
+    .botoes-filtros .btn {
+        font-size: 18px;
+        position: relative;
+        width: 50px;
+        height: 50px;
+        padding-left: 50px;
+        padding-right: 0;
+        overflow: hidden;
+    }    
+}

@@ -1,0 +1,487 @@
+.sem-dados-grid {border: 1px solid #ccc; padding: 20px 20px; background-color: #EFEFEF; font-family: Arial; font-size: 16px; color: #999;}
+.header-grid {border: 1px solid #E6E6FA; color: #191970; background: #EFEFEF; font-size: 12px; margin: 5px 0; font-family: Arial;   border-radius: 2px; }
+.header-grid.com-filtro {color: #856404; background: #fff3cd; border-color: #ffeeba;}
+.header-grid .header-grid-qtd {padding-top: 7px; padding-left: 10px; padding-bottom: 7px; float: left; }
+.header-grid .header-grid-qtd-pag {float: right;}
+.gridview.com-borda th {border: 1px solid #ccc; padding: 5px 7px;}
+.gridview.com-borda .linha-grid td {border: 1px solid #ccc; padding: 5px 7px;}
+.gridview tr td .caption-dado, .gridview tr td .clear {display: none}
+.numerico { text-align: right; vertical-align: middle;}
+.boolean {text-align: center; vertical-align: middle;}
+
+.paginacao {
+    color: #191970; 
+    font-size: 12px;
+    font-family: Arial;
+    padding-top: 15px;
+    border-top: 1px solid #E6E6FA;
+    transition-duration: .5s;
+}
+.paginacao .botao {
+    float: left;
+    padding-left: 5px;
+    transition-duration: .5s;
+}
+.paginacao .botao .btn {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E6E6FA;
+    transition-duration: .5s;
+}
+.paginacao .campo {
+    float: left; 
+    padding: 0 8px;
+    transition-duration: .5s;
+}
+.table {margin-bottom: 0;}
+
+.gridview th, .gridview td {
+    vertical-align: middle;
+}
+
+.gridview th.btn-ver, .gridview td.btn-ver {
+    font-size: 14px;
+    width: 30px;
+    text-align: center;
+}
+.display-none{
+    z-index: 999999;
+    /* display: none !important;
+    overflow: hidden; */
+}
+.gridview td.btn-ver {
+    padding: 2px;
+    overflow: hidden;
+}
+
+.gridview td.btn-ver a {
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .1rem .5rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.gridview td.btn-ver a:hover {
+    border-color: #17a2b8;
+    color: #17a2b8;
+}
+
+@media screen and (max-width: 440px) {
+    .paginacao {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        border: 1px solid #E6E6FA;
+        background: #FEFEFE;
+        font-size: 11px;
+        font-family: Arial;
+        padding: 5px;
+        width: 100%;
+        box-sizing: border-box !important;
+    }    
+    .paginacao .btn {
+        font-size: 13px;
+        min-width: 30px;
+        display: block;
+    }
+    .paginacao .campo input {
+        font-size: 13px;
+        width: 50px !important;
+    }
+    .gridview {
+        overflow-x: hidden;
+    }
+    .table {
+        margin-bottom: 40px;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .header-grid .header-grid-qtd-pag {
+        max-width: 120px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .header-grid {
+        min-width: 300px;
+    }
+    .gridview th.btn-ver {
+        font-weight: 400;
+        white-space: nowrap;
+        padding: .375rem .75rem;
+        line-height: 1.5;
+    }
+    .gridview td.btn-ver a {
+        padding: .375rem .75rem;
+    }
+    .gridview.maior-2-colunas thead {
+        display: none;
+    }
+    .gridview.maior-2-colunas tr {
+        display: block;
+        padding: 10px 0;
+        border: 1px solid #e6e6fa;
+        margin-bottom: 10px;
+        position: relative;
+        padding-bottom: 65px;
+    }
+    .gridview.maior-2-colunas tr td {
+        display: block;
+        border: 0;
+        text-align: center;
+        padding: 0;
+    }
+    .gridview.maior-2-colunas tr td .caption-dado {
+        text-align: right;
+        font-weight: bold;
+        width: 30%;
+        padding: 5px 0;
+        display: block;
+        float: left;
+        box-sizing: border-box;
+    }
+    .gridview.maior-2-colunas tr td .dado {
+        box-sizing: border-box;
+        widows: 70%;
+        padding: 5px 10px;
+        float: left;
+    }
+    .gridview.maior-2-colunas tr td .clear {
+        display: block;
+        clear: both;
+    }
+    .gridview.maior-2-colunas tr td.btn-ver {
+        position: absolute;
+        bottom: 0;
+        background-color: #FEFEFE;
+        width: 100%;
+        padding: 10px;
+        text-align: right;
+        border-top: 1px solid #cccccc;  
+        height: 55px;      
+    }
+    .gridview.maior-2-colunas tr td.btn-ver a {
+        text-transform: none;
+        user-select: none;
+        padding: .375rem .75rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        color: #007bff;
+        background-image: none;
+        border-color: #007bff;
+    }
+    .gridview.maior-2-colunas tr td.btn-ver a:hover {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .gridview.maior-2-colunas tr td.btn-ver a i {
+        display: none;
+    }
+    .gridview.maior-2-colunas tr td.btn-ver a:after {
+        content: 'Ver Detalhes';
+    }
+    .gridview.maior-2-colunas tr td.btn-ver a:before {
+        content: '\F002';
+        font: normal normal normal 14px/1 FontAwesome;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .gridview.maior-4-colunas thead {
+        display: none;
+    }
+    .gridview.maior-4-colunas tr {
+        display: block;
+        padding: 10px 0;
+        border: 1px solid #e6e6fa;
+        margin-bottom: 10px;
+        position: relative;
+        padding-bottom: 65px;
+    }
+    .gridview.maior-4-colunas tr td {
+        display: block;
+        border: 0;
+        text-align: center;
+        padding: 0;
+    }
+    .gridview.maior-4-colunas tr td .caption-dado {
+        text-align: right;
+        font-weight: bold;
+        width: 30%;
+        padding: 5px 0;
+        display: block;
+        float: left;
+        box-sizing: border-box;
+    }
+    .gridview.maior-4-colunas tr td .dado {
+        box-sizing: border-box;
+        widows: 70%;
+        padding: 5px 10px;
+        float: left;
+    }
+    .gridview.maior-4-colunas tr td .clear {
+        display: block;
+        clear: both;
+    }
+    .gridview.maior-4-colunas tr td.btn-ver {
+        position: absolute;
+        bottom: 0;
+        background-color: #FEFEFE;
+        width: 100%;
+        padding: 10px;
+        text-align: right;
+        border-top: 1px solid #cccccc;  
+        height: 55px;      
+    }
+    .gridview.maior-4-colunas tr td.btn-ver a {
+        text-transform: none;
+        user-select: none;
+        padding: .375rem .75rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        color: #007bff;
+        background-image: none;
+        border-color: #007bff;
+    }
+    .gridview.maior-4-colunas tr td.btn-ver a:hover {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .gridview.maior-4-colunas tr td.btn-ver a i {
+        display: none;
+    }
+    .gridview.maior-4-colunas tr td.btn-ver a:after {
+        content: 'Ver Detalhes';
+    }
+    .gridview.maior-4-colunas tr td.btn-ver a:before {
+        content: '\F002';
+        font: normal normal normal 14px/1 FontAwesome;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .gridview.maior-6-colunas thead {
+        display: none;
+    }
+    .gridview.maior-6-colunas tr {
+        display: block;
+        padding: 10px 0;
+        border: 1px solid #e6e6fa;
+        margin-bottom: 10px;
+        position: relative;
+        padding-bottom: 65px;
+    }
+    .gridview.maior-6-colunas tr td {
+        display: block;
+        border: 0;
+        text-align: center;
+        padding: 0;
+    }
+    .gridview.maior-6-colunas tr td .caption-dado {
+        text-align: right;
+        font-weight: bold;
+        width: 30%;
+        padding: 5px 0;
+        display: block;
+        float: left;
+        box-sizing: border-box;
+    }
+    .gridview.maior-6-colunas tr td .dado {
+        box-sizing: border-box;
+        widows: 70%;
+        padding: 5px 10px;
+        float: left;
+    }
+    .gridview.maior-6-colunas tr td .clear {
+        display: block;
+        clear: both;
+    }
+    .gridview.maior-6-colunas tr td.btn-ver {
+        position: absolute;
+        bottom: 0;
+        background-color: #FEFEFE;
+        width: 100%;
+        padding: 10px;
+        text-align: right;
+        border-top: 1px solid #cccccc;  
+        height: 55px;      
+    }
+    .gridview.maior-6-colunas tr td.btn-ver a {
+        text-transform: none;
+        user-select: none;
+        padding: .375rem .75rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        color: #007bff;
+        background-image: none;
+        border-color: #007bff;
+    }
+    .gridview.maior-6-colunas tr td.btn-ver a:hover {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .gridview.maior-6-colunas tr td.btn-ver a i {
+        display: none;
+    }
+    .gridview.maior-6-colunas tr td.btn-ver a:after {
+        content: 'Ver Detalhes';
+    }
+    .gridview.maior-6-colunas tr td.btn-ver a:before {
+        content: '\F002';
+        font: normal normal normal 14px/1 FontAwesome;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .gridview.maior-8-colunas thead {
+        display: none;
+    }
+    .gridview.maior-8-colunas tr {
+        display: block;
+        padding: 10px 0;
+        border: 1px solid #e6e6fa;
+        margin-bottom: 10px;
+        position: relative;
+        padding-bottom: 65px;
+    }
+    .gridview.maior-8-colunas tr td {
+        display: block;
+        border: 0;
+        text-align: center;
+        padding: 0;
+    }
+    .gridview.maior-8-colunas tr td .caption-dado {
+        text-align: right;
+        font-weight: bold;
+        width: 30%;
+        padding: 5px 0;
+        display: block;
+        float: left;
+        box-sizing: border-box;
+    }
+    .gridview.maior-8-colunas tr td .dado {
+        box-sizing: border-box;
+        widows: 70%;
+        padding: 5px 10px;
+        float: left;
+    }
+    .gridview.maior-8-colunas tr td .clear {
+        display: block;
+        clear: both;
+    }
+    .gridview.maior-8-colunas tr td.btn-ver {
+        position: absolute;
+        bottom: 0;
+        background-color: #FEFEFE;
+        width: 100%;
+        padding: 10px;
+        text-align: right;
+        border-top: 1px solid #cccccc;  
+        height: 55px;      
+    }
+    .gridview.maior-8-colunas tr td.btn-ver a {
+        text-transform: none;
+        user-select: none;
+        padding: .375rem .75rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        color: #007bff;
+        background-image: none;
+        border-color: #007bff;
+    }
+    .gridview.maior-8-colunas tr td.btn-ver a:hover {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .gridview.maior-8-colunas tr td.btn-ver a i {
+        display: none;
+    }
+    .gridview.maior-8-colunas tr td.btn-ver a:after {
+        content: 'Ver Detalhes';
+    }
+    .gridview.maior-8-colunas tr td.btn-ver a:before {
+        content: '\F002';
+        font: normal normal normal 14px/1 FontAwesome;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .gridview.maior-10-colunas thead {
+        display: none;
+    }
+    .gridview.maior-10-colunas tr {
+        display: block;
+        padding: 10px 0;
+        border: 1px solid #e6e6fa;
+        margin-bottom: 10px;
+        position: relative;
+        padding-bottom: 65px;
+    }
+    .gridview.maior-10-colunas tr td {
+        display: block;
+        border: 0;
+        text-align: center;
+        padding: 0;
+    }
+    .gridview.maior-10-colunas tr td .caption-dado {
+        text-align: right;
+        font-weight: bold;
+        width: 30%;
+        padding: 5px 0;
+        display: block;
+        float: left;
+        box-sizing: border-box;
+    }
+    .gridview.maior-10-colunas tr td .dado {
+        box-sizing: border-box;
+        widows: 70%;
+        padding: 5px 10px;
+        float: left;
+    }
+    .gridview.maior-10-colunas tr td .clear {
+        display: block;
+        clear: both;
+    }
+    .gridview.maior-10-colunas tr td.btn-ver {
+        position: absolute;
+        bottom: 0;
+        background-color: #FEFEFE;
+        width: 100%;
+        padding: 10px;
+        text-align: right;
+        border-top: 1px solid #cccccc;  
+        height: 55px;      
+    }
+    .gridview.maior-10-colunas tr td.btn-ver a {
+        text-transform: none;
+        user-select: none;
+        padding: .375rem .75rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        color: #007bff;
+        background-image: none;
+        border-color: #007bff;
+    }
+    .gridview.maior-10-colunas tr td.btn-ver a:hover {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .gridview.maior-10-colunas tr td.btn-ver a i {
+        display: none;
+    }
+    .gridview.maior-10-colunas tr td.btn-ver a:after {
+        content: 'Ver Detalhes';
+    }
+    .gridview.maior-10-colunas tr td.btn-ver a:before {
+        content: '\F002';
+        font: normal normal normal 14px/1 FontAwesome;
+    }
+}

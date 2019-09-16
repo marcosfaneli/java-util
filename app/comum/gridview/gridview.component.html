@@ -1,0 +1,113 @@
+<div class="sem-dados-grid" *ngIf="total_registros === 0">
+  Nenhum registro para exibir.
+</div>
+<div class="header-grid" [class.com-filtro]="ListagemComFiltros"
+  *ngIf="visualizarTotalRegistros && total_registros > 0 ">
+  <div class="header-grid-qtd align-middle">
+    Total de Registros: {{total_registros}}
+  </div>
+  <div class="header-grid-qtd-pag" *ngIf="Paginacao">
+    <select class="form-control form-control-sm" [(ngModel)]="registrosPagina" (change)="mudarQtdPorPagina()">
+      <option value="5"> 05 registros por página</option>
+      <option value="10"> 10 registros por página</option>
+      <option value="15"> 15 registros por página</option>
+      <option value="20"> 20 registros por página</option>
+      <option value="30"> 30 registros por página</option>
+      <option value="40"> 40 registros por página</option>
+      <option value="50"> 50 registros por página</option>
+      <option value="100">100 registros por página</option>
+    </select>
+  </div>
+  <div class="clear"></div>
+</div>
+<div #TABLE>
+<table class="table table-sm table-hover table-striped gridview" *ngIf="total_registros > 0"
+  [class.maior-2-colunas]="Estrutura.length > 2" [class.maior-4-colunas]="Estrutura.length >= 4"
+  [class.maior-6-colunas]="Estrutura.length > 6" [class.maior-8-colunas]="Estrutura.length > 8"
+  [class.maior-10-colunas]="Estrutura.length > 10" [class.com-borda]="Borda">
+  <thead class="thead-dark">
+    <tr>
+      <th class=""  *ngIf="ExibirBotaoDetalhes">
+        <span *ngIf="ExibirBotaoDetalhesIcon" class="badge badge-light" (click)="ExportTOExcel()">
+          <em class="fa fa-download"></em>
+        </span>
+      </th>
+      <th *ngFor="let coluna of Estrutura" appColunaGrid [coluna]="coluna"> {{coluna.getHeaderText()}} 
+        <em class="fas fa-sort-alpha-down"></em> &nbsp;
+        <a (click)="coluna.getTitleAction()" title="Ver Detalhes {{coluna.getHeaderText()}}"
+          [hidden]="coluna.getHeaderText() ==='Serviços' ||  coluna.getHeaderText() ==='Peças'">
+          <!-- Icones de cabeçalho - RMPV para acessar os RMPV Detalhes -->
+          <em *ngIf="coluna.isAction()" class="fa fa-plus-square"></em>
+        </a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="linha-grid" *ngFor="let registro of linhas" [@animacaoPagina]="bindingVar">
+      <td class="btn-ver" *ngIf="ExibirBotaoDetalhes">
+        <a (click)="visualizar(registro)" href="javascript:;" title="Ver Detalhes">
+          <em class="fa fa-file-text-o"></em>
+        </a>
+      </td>
+      <td *ngFor="let coluna of Estrutura" appColunaGrid [coluna]="coluna">
+ 
+        <div class="dado">
+          <ng-template appConteudoColunaGrid [coluna]="coluna" [registro]="registro" ng-model="registro"> </ng-template>
+        </div>
+        <div class="clear"></div>
+      </td>
+    </tr>
+  </tbody>
+  <!-- Estrutura do Totalizador Internas -->
+  <thead class="thead-dark" *ngIf="totalInterna">
+    <tr>
+      <th class="btn-ver" *ngIf="ExibirBotaoDetalhes">
+      </th>
+      <th *ngFor="let coluna of EstruturaInterna" appColunaGrid [coluna]="coluna" [style.width]="coluna.getWidth()">
+        {{coluna.getHeaderText()}} &nbsp;</th>
+    </tr>
+  </thead>
+  <!-- Estrutura do Totalizador Greal -->
+  <thead class="thead-dark" *ngIf="totalInterna">
+    <tr>
+      <th class="btn-ver" scope="col" *ngIf="ExibirBotaoDetalhes">
+      </th>
+      <th *ngFor="let coluna of EstruturaTotal" appColunaGrid [coluna]="coluna" [style.width]="coluna.getWidth()">
+        {{coluna.getHeaderText()}} &nbsp;</th>
+    </tr>
+  </thead>
+</table>
+</div>
+<br>
+<br>
+<div class="paginacao" *ngIf="Paginacao && ultimaPagina > 1">
+  <div class="float-right">
+    <div class="botao">
+      <button type="button" class="btn btn-outline-info btn-sm" (click)="irPrimeiraPagina()" [disabled]="PaginaAtual === 1">
+        <<
+      </button>
+    </div>
+    <div class="botao">
+      <button type="button" class="btn btn-outline-info btn-sm" (click)="irPaginaAnterior()" [disabled]="PaginaAtual === 1">
+        <
+      </button> 
+    </div>
+    <div class="campo">
+      Página 
+      <input type="text" class="form-control form-control-sm text-center" style="width: 60px; display: inline-block;" (blur)="irPagina()" [(ngModel)]="PaginaAtual" />
+      de {{ultimaPagina}}
+    </div>
+    <div class="botao">
+      <button type="button" class="btn btn-outline-info btn-sm" (click)="irPaginaPosterior()" [disabled]="PaginaAtual === ultimaPagina">
+        >
+      </button>
+    </div>
+    <div class="botao">
+      <button type="button" class="btn btn-outline-info btn-sm" (click)="irUltimaPagina()" [disabled]="PaginaAtual === ultimaPagina">
+        >>
+      </button>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="clear"></div>
+</div>

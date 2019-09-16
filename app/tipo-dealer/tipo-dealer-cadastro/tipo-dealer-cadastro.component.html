@@ -1,0 +1,38 @@
+<app-barra-crud [state]="state" (salvando)="salvar($event)" (voltando)="busca($event)" (inserindo)="novo($event)"
+  (editando)="editar($event)" (excluindo)="excluir($event)" (cancelando)="cancelar($event)" [formValido]="f.valid">
+</app-barra-crud>
+<div class="conteudo cadastro">
+  <form role="form" #f="ngForm" novalidate>
+    <nav class="topo-abas">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a id="dados-principais-tab" href="#dados-principais" aria-controls="dados-principais" aria-selected="true"
+          class="nav-item nav-link active" data-toggle="tab" role="tab">
+          Dados principais
+        </a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div id="dados-principais" aria-labelledby="dados-principais-tab" class="tab-pane fade show active"
+        role="tabpanel">
+        <header class="titulo">Dados Principais</header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div>
+          <div class="row">
+            <app-text-box [state]="state" class="col-lg-3" label="ID" name="idTipoDealer" [(ngModel)]="model.id"
+              placeholder="Automático" [ativo]="false"></app-text-box>
+          </div>
+          <div class="row">
+            <app-dropdown-list [state]="state" class="col-md-5 col-lg-3" label="Tipo" name="tipo" [(ngModel)]="model.tipo"
+              obrigatorio="true" required [itens]="itensTipo"></app-dropdown-list>
+            <app-text-box [state]="state" class="col-md-7 col-lg-9" label="Descrição" name="descricao"
+              [(ngModel)]="model.descricao" obrigatorio="true" required placeholder="Descrição..."></app-text-box>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

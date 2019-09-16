@@ -1,0 +1,81 @@
+<nav id="sidebar">
+  <div class="sidebar-header" style="text-align: center">
+    <img *ngIf="logo === 'hyundai'" src="assets/img/logo_site_hyundai.png">
+    <img *ngIf="logo === 'jlr'" src="assets/img/logo_site_jlr.png">
+    <img *ngIf="logo === 'kia'" src="assets/img/logo_site_kia.png">
+    <img *ngIf="logo === 'harley'" src="assets/img/logo_site_harley.png">
+    <img *ngIf="logo === 'volvo'" src="assets/img/logo_site_volvo.png">
+    <img *ngIf="logo === 'brp'" src="assets/img/logo_site_brp.png">
+  </div>
+  <ul class="list-unstyled components">
+    <li>
+      <a routerLink="/"><i class="fa fa-home"></i> Home</a>
+    </li>
+    <li>
+      <a href="javascript:;"><i class="fa fa-line-chart"></i> RMPV </a>
+      <ul>
+        <li>
+          <a routerLink="rmpv/oficina">Oficina</a>
+        </li>
+        <li>
+          <a routerLink="rmpv/peca">Peça</a>
+        </li>
+        <li>
+          <a routerLink="rmpv/passagem">Passagem</a>
+        </li>
+        <li>
+          <a routerLink="produtividade">Produtividade</a>
+        </li>
+        <li>
+          <a routerLink="rmpv/detalhado">Detalhado</a>
+        </li>
+      </ul>
+    </li>
+    <li *ngIf="_exibirMenu">
+      <a href="javascript:;"><i class="fa fa-users"></i> Acessos</a>
+      <ul>
+        <li *ngIf="false">
+          <a routerLink="usuario_dealer">Usuário Dealer</a>
+        </li>
+        <li>
+          <a routerLink="usuario_fabrica">Usuário Fábrica</a>
+        </li>
+      </ul>
+    </li>
+    <li *ngIf="_exibirMenu">
+      <a href="javascript:;"><i class="fa fa-cogs"></i> Parâmetros</a>
+      <ul>
+        <li>
+          <a routerLink="dealer">Dealer</a>
+        </li>
+        <li>
+          <a routerLink="tipo-dealer">Tipo Dealer</a>
+        </li>
+        <li>
+          <a routerLink="grupo-importador">Grupo importador</a>
+        </li>
+        <li>
+          <a routerLink="tipo-os">Tipos de O.S.</a>
+        </li>
+        <li>
+          <a routerLink="quartil">Quartil</a>
+        </li>
+        <li>
+          <a routerLink="regional">Regional</a>
+        </li>
+        <li>
+          <a routerLink="grupo-economico">Grupo econômico</a>
+        </li>
+        <li>
+          <a routerLink="funcao">Função</a>
+        </li>
+        <li>
+          <a routerLink="produtividade-indice">Índice Produtividade</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="sidebar-footer" style="text-align: center">
+    <img *ngIf="logo === 'jlr'" src="assets/img/logo_site_nbs_rodape.png">
+  </div>
+</nav>

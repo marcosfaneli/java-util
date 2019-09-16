@@ -1,0 +1,32 @@
+<div class="drop-dow-notificacao" id="notificacao"
+  style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-325px, 50px, 0px);">
+  <form>
+    <div class="notificacao-head">
+      <h3 class="notificacao-head-titulo">Notificações</h3>
+      <div class="notificacao-head-titulo-quantidade">
+        <span class="quantidade">
+          {{total_registros}} Notificações
+        </span>
+      </div>
+    </div>
+
+    <div class="notificacao-body" data-scroll="true" data-height="370" data-mobile-height="220"
+      style="height: 220px; overflow: auto;">
+      <div class="accordion">
+        <div class="notificacao_mensagem">
+          <div class="notificacao-mensagem-box">
+            <app-barra-notificacao-lista></app-barra-notificacao-lista>
+          </div>
+        </div>
+      </div>
+
+      <div class="notificacao_mensagem-rodape">
+        <div class="rodape-text">
+          <a routerLink="notificacao-historico">
+            <p>Mostrar Mais</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

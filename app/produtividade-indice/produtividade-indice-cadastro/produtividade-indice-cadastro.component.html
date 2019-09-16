@@ -1,0 +1,62 @@
+<app-barra-crud
+  [state]="state"
+  (salvando)="salvar($event)"
+  (voltando)="busca($event)"
+  (inserindo)="novo($event)"
+  (editando)="editar($event)"
+  (excluindo)="excluir($event)"
+  (cancelando)="cancelar($event)"
+  [exibirNovo]="exibirNovo"
+  [exibirExcluir]="exibirExcluir"
+  [formValido]="f.valid">
+</app-barra-crud>
+
+<div class="conteudo cadastro">
+    <form role="form" #f="ngForm" novalidate>
+        <nav class="topo-abas">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a id="dados-principais-tab" href="#dados-principais" aria-controls="dados-principais"
+                    aria-selected="true" class="nav-item nav-link active" data-toggle="tab" role="tab">
+                    Dados principais
+                </a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div id="dados-principais" aria-labelledby="dados-principais-tab"
+                class="tab-pane fade show active" role="tabpanel">
+                <header class="titulo">Dados Principais</header>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col col-lg-12">
+                            <small class="text-info">Campos com (*) são de preenchimento obrigatório.</small>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <app-text-box [state]="state" class="col-lg-3" label="ID" name="idFuncao"
+                            [(ngModel)]="model.id" placeholder="Automático" [ativo]="false">
+                        </app-text-box>
+
+                        <app-text-box [state]="state" class="col-lg-3" label="Fábrica" name="fabrica"
+                            [ativo]="false" required [(ngModel)]="model.fabrica" placeholder="Fábrica..." >
+                        </app-text-box>
+                    </div>
+                    <div class="row">
+                        <app-text-box [state]="state" class="col-lg-4" label="Mão de obra" name="maoDeObra"
+                            obrigatorio="true" required [(ngModel)]="model.maoDeObra" placeholder="Mão de obra..." >
+                        </app-text-box>
+
+                        <app-text-box [state]="state" class="col-lg-4" label="Produtividade" name="produtividade"
+                            obrigatorio="true" required [(ngModel)]="model.produtividade" placeholder="Produtividade..." >
+                        </app-text-box>
+
+                        <app-text-box [state]="state" class="col-lg-4" label="Eficiência" name="eficiencia"
+                            obrigatorio="true" required [(ngModel)]="model.eficiencia" placeholder="Eficiência..." >
+                        </app-text-box>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,10 @@
+<div *ngIf="selecionado">
+  <app-produtividade-indice-cadastro [model]="selecionado"
+    (buscar)="buscar($event)" [state]="state">
+  </app-produtividade-indice-cadastro>
+</div>
+
+<div *ngIf="!selecionado">
+  <app-produtividade-indice-lista (exibir)="selecionar($event)" >
+  </app-produtividade-indice-lista>
+</div>

@@ -1,0 +1,73 @@
+<div class="row" id="incluindo-comunicado" *ngIf="ativo">
+  <div class="w-100">
+    <div class="border border-info container">
+      <div class="form-group">
+        <label>Título:</label>
+        <input #inputTitulo type="text" class="form-control" [(ngModel)]="titulo" placeholder="Incluir um Título...">
+      </div>
+      <hr>
+      <div>
+        <div class="filtro ng-star-inserted" style="margin: 10px 10px 0px 4px;">
+          Marcadores:
+        </div>
+        <span class="btn btn-outline-success btn-sm" *ngFor="let marcador of marcadores"
+          style="margin: 6px 2px 2px 2px;" (click)="removerMarcador(marcador)">
+          {{marcador}}
+          <i class="fa fa-times" aria-hidden="true" (click)="removerMarcador(marcador)"></i>
+        </span>
+        <span>
+          <input type="text" class="form-control input-margin" size="30" (keyup.enter)="inserirMarcador($event)" placeholder="Incluir marcador...">
+        </span>
+        <div class="clear"></div>
+      </div>
+      <hr>
+      <div>
+        <div class="filtro ng-star-inserted" style="margin: 10px 10px 0px 4px;">
+          Destinatários :
+        </div>
+        <span class="btn btn-outline-success btn-sm" *ngFor="let destinatario of contatosSelecionados()"
+          style="margin: 6px 2px 0px 2px;" (click)="removerDestinatario(destinatario.id)">
+          {{destinatario.nome}}
+          <i class="fa fa-times" aria-hidden="true" (click)="removerDestinatario(destinatario)"></i>
+        </span>
+        <div class="botao">
+          <button class="btn btn-info btn-sm" (click)="selecionarDestinatario()">
+            <em class="fa fa-plus"></em>
+          </button>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <hr>
+      <div>
+        <div class="filtro ng-star-inserted" style="margin: 10px 10px 0px 4px;">
+          Anexos:
+        </div>
+        <span class="btn btn-outline-success btn-sm" *ngFor="let item of uploader.queue"
+          style="margin: 6px 2px 0px 2px;" (click)="removerArquivo(arquivo)">
+          {{item._file.name}}
+          <i class="fa fa-times" aria-hidden="true" (click)="removerArquivo(arquivo)"></i>
+        </span>
+        <div>
+          <input type="file" class="input-margin" ng2FileSelect accept=".pdf" [uploader]="uploader" multiple />
+        </div>
+        <div class="clear"></div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label for="inputMensagem">Mensagem:</label>
+        <textarea class="form-control" id="texto" rows="6" #inputmensagem [(ngModel)]="mensagem"></textarea>
+      </div>
+      <div class="btn-group" role="group" aria-label="botoes-incluir">
+        <button type="submit" class="btn btn-secondary" (click)="salvarComunicado()" (click)="reloadPage()">Enviar</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelarInclusao()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-selecionar 
+  [idModal]="'modal-destinatarios'" 
+  [titulo]="'Selecione as destinatários'"
+  [lista]="contatosDisponiveis()" 
+  (escolhido)="adicionarDestinatario($event)">
+</app-selecionar>

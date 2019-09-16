@@ -1,0 +1,15 @@
+<div *ngIf="selecionado">
+  <app-quartil-cadastro
+    [model]="selecionado"
+    (buscar)="buscar($event)"
+    [state]="state">
+  </app-quartil-cadastro>
+</div>
+<div *ngIf="!selecionado">
+  <app-quartil-filtro [filtros]="filtros">
+  </app-quartil-filtro>
+  <app-quartil-lista [filtros]="filtros" 
+  (exibir)="selecionar($event)"  
+  (definirFiltro)="definirFiltro()">
+  </app-quartil-lista>
+</div>

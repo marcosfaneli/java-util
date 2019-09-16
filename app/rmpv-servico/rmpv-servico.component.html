@@ -1,0 +1,11 @@
+<div> 
+  <app-rmpv-servico-filtro
+        [filtros]="filtros">
+  </app-rmpv-servico-filtro>
+  <app-rmpv-servico-lista
+        [filtros]="filtros"
+        (definirFiltro)="definirFiltro()"
+        (exibir)="selecionar($event)">
+  </app-rmpv-servico-lista>
+ </div>
+ 

@@ -1,0 +1,73 @@
+<app-barra-crud
+  [state]="state"
+  (salvando)="salvar($event)"
+  (voltando)="busca($event)"
+  (inserindo)="novo($event)"
+  (editando)="editar($event)"
+  (excluindo)="excluir($event)"
+  (cancelando)="cancelar($event)"
+  [formValido]="f.valid">
+</app-barra-crud>
+<div class="conteudo cadastro">
+  <form role="form" #f="ngForm" novalidate>
+    <nav class="topo-abas">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a id="dados-principais-tab" href="#dados-principais" aria-controls="dados-principais" aria-selected="true" class="nav-item nav-link active" data-toggle="tab" role="tab">
+          Dados principais
+        </a>
+        <a id="dados-contato-tab" href="#dados-contato" aria-controls="dados-contato" aria-selected="false" class="nav-item nav-link" data-toggle="tab" role="tab">
+          Contato
+        </a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div id="dados-principais" aria-labelledby="dados-principais-tab" class="tab-pane fade show active" role="tabpanel">
+        <header class="titulo">Dados Principais</header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col col-lg-12">
+              <small class="text-info">Campos com (*) são de preenchimento obrigatório.</small>
+              <hr/>
+            </div>
+          </div>
+          <div class="row">
+            <app-text-box [state]="state" class="col-lg-3" label="ID" name="idUsuario" [(ngModel)]="model.id" placeholder="Automático" [ativo]="false"></app-text-box>
+          </div>
+          <div class="row">
+            <app-dropdown-list-api class="col-lg-3" label="Dealer" name="dealer" [(ngModel)]="model.dealer" obrigatorio="true" required filtro="dealer" ></app-dropdown-list-api>
+            <app-text-box [state]="state" class="col-lg-5" label="Nome" name="nome" [(ngModel)]="model.nome" obrigatorio="true" required placeholder="Nome..."></app-text-box>
+            <app-text-box mascara="000.000.000-00" [state]="state" class="col-lg-3" label="CPF" name="cpf" [(ngModel)]="model.cpf" obrigatorio="true" required placeholder="CPF..."></app-text-box>
+          </div>
+          <div class="row">
+            <app-text-box [state]="state" class="col-lg-5" label="E-mail" name="email" [(ngModel)]="model.email" obrigatorio="true" required placeholder="fulano@fulano.com..."></app-text-box>
+            <app-dropdown-list-api class="col-lg-3" label="Função" name="funcao" [(ngModel)]="model.funcao" obrigatorio="true" required filtro="funcao"></app-dropdown-list-api>
+            <app-dropdown-list class="col-lg-3" label="Ativo" name="ativo" [(ngModel)]="model.ativo" obrigatorio="true" required [itens]="itensAtivo" ></app-dropdown-list>
+          </div>
+          <hr/>
+          <div class="row">
+            <app-text-box [state]="state" class="col-lg-3" label="Login" name="login" [(ngModel)]="model.login" obrigatorio="true" required placeholder=""></app-text-box>
+            <app-text-box-password [state]="state" class="col-lg-3" label="Senha" name="senha" [(ngModel)]="model.senha" obrigatorio="true" required placeholder=""></app-text-box-password>
+            <app-text-box-password [state]="state" class="col-lg-3" label="Confirmar senha" name="confirmasenha" [(ngModel)]="model.senha_confirmada" obrigatorio="true" required placeholder="confirme a senha..."></app-text-box-password>
+          </div>
+        </div>
+      </div>
+      <div id="dados-contato" aria-labelledby="dados-contato-tab" class="tab-pane fade" role="tabpanel">
+        <header class="titulo">Contato</header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div>
+          <div class="row">
+            <app-text-box [state]="state" class="col-lg-8" label="E-mail" name="email" [(ngModel)]="model.email" placeholder="fulano@fulano.com" [ativo]="false"></app-text-box>
+          </div>
+          <div class="row">
+            <app-text-box mascara="0{3}" [state]="state" class="col-lg-2" label="DDD" name="ddd" [(ngModel)]="model.ddd" obrigatorio="true" required placeholder="DDD..."></app-text-box>
+            <app-text-box mascara="0{5}-0{4}" [state]="state" class="col-lg-6" label="Telefone" name="telefone" [(ngModel)]="model.telefone" obrigatorio="true" required placeholder="Telefone..."></app-text-box>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="historico-filtro-notificacao">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Definir filtros</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container striped-rows">
+              <div class="row ptb5">
+                  <div class="col col-4">
+                    Dealer
+                  </div>
+                  <div class="col col-8">
+                    <select class="form-control form-control-sm" type="number" [(ngModel)]="filtros.nomeDealer">
+                      <option selected value="">Selecione o Dealer...</option>
+                      <option *ngFor="let item of nomeDealer" [value]="item.descricao">{{item.descricao}}</option>
+                    </select>
+                  </div>
+                </div>   
+            <!-- <div class="row ptb5">
+              <div class="col col-4">
+               Número OS
+              </div>
+              <div class="col col-8">
+                <input class="form-control form-control-sm" type="number" placeholder="Informe a OS..." [(ngModel)]="filtros.numeroOs">
+              </div>
+            </div> -->
+
+            <div class="row ptb5">
+              <div class="col col-4">
+                Marca
+              </div>
+              <div class="col col-8">
+                <input class="form-control form-control-sm" type="text" placeholder="Informe o Marca..." [(ngModel)]="filtros.veiculoMarca">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" (click)="filtros.nomeDealer = '' || filtros.numeroOs = '' || filtros.veiculoMarca = ''">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>

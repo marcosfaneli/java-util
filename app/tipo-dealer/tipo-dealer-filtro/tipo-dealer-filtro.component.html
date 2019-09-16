@@ -1,0 +1,51 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="tipo-dealer-filtro">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Definir filtros</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container striped-rows">
+          <div class="row ptb5">
+            <div class="col col-4">
+              ID
+            </div>
+            <div class="col col-8">
+              <input class="form-control form-control-sm" type="number" placeholder="Informe o ID..." [(ngModel)]="filtros.id">
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-4">
+              Tipo
+            </div>
+            <div class="col col-8">
+              <select class="form-control form-control-sm" [(ngModel)]="filtros.tipo" placeholder="Selecione o tipo...">
+                <option value="">Selecione o tipo...</option>
+                <option value="1S">1S</option>
+                <option value="2S">2S</option>
+                <option value="3S">3S</option>
+              </select>              
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-4">
+              Descrição
+            </div>
+            <div class="col col-8">
+              <input class="form-control form-control-sm" type="text" placeholder="Informe a descrição..." [(ngModel)]="filtros.descricao">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="filtros.id = '' || filtros.tipo = '' || filtros.descricao = ''">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

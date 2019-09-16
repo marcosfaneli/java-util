@@ -1,0 +1,216 @@
+<app-barra-crud
+  [state]="state"
+  (salvando)="salvar($event)"
+  (voltando)="busca($event)"
+  (inserindo)="novo($event)"
+  (editando)="editar($event)"
+  (excluindo)="excluir($event)"
+  (cancelando)="cancelar($event)"
+  [formValido]="f.valid">
+</app-barra-crud>
+
+<div class="conteudo cadastro">
+  <app-loading [exibir]="carregando"></app-loading>
+  <form role="form" #f="ngForm" novalidate>
+    <nav class="topo-abas">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a id="dados-principais-tab" href="#dados-principais" aria-controls="dados-principais" aria-selected="true"
+          class="nav-item nav-link active" data-toggle="tab" role="tab">
+          Dados principais
+        </a>
+        <a id="endereco-tab" href="#endereco" aria-controls="endereco" aria-selected="false" class="nav-item nav-link"
+          data-toggle="tab" role="tab">
+          Endereço
+        </a>
+        <a id="contato-tab" href="#contato" aria-controls="contato" aria-selected="false" class="nav-item nav-link"
+          data-toggle="tab" role="tab">
+          Contatos
+        </a>
+        <a id="jlr-tab" href="#jlr" aria-controls="jlr" aria-selected="false" class="nav-item nav-link"
+          data-toggle="tab" role="tab">
+          Dados JLR
+        </a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div id="dados-principais" aria-labelledby="dados-principais-tab" class="tab-pane fade show active"
+        role="tabpanel">
+        <header class="titulo">Dados Principais</header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div>
+          <div class="row">
+            <app-text-box class="col-md-4 col-lg-4" label="ID" name="idDealer"
+              [(ngModel)]="model.id" placeholder="Automático" [ativo]="false">
+            </app-text-box>
+          </div>
+          <div class="row">
+            <app-text-box [state]="state" class="col-md-4 col-lg-4" maxLength='20' label="Código Dealer" name="codigoDealer"
+              [(ngModel)]="model.codigo" obrigatorio="true" required placeholder="Código do dealer...">
+            </app-text-box>
+            <app-dropdown-list [state]="state" class="col-md-4 col-lg-4" label="Tipo Dealer" name="tipoDealer"
+              [(ngModel)]="model.idTipo" obrigatorio="true" required [itens]="itensTipoDealer">
+            </app-dropdown-list>
+            <app-dropdown-list [state]="state" class="col-md-4 col-lg-4" label="Status Dealer" name="statusDealer"
+              [(ngModel)]="model.status" obrigatorio="true" required [itens]="itensStatusDealer">
+            </app-dropdown-list>
+          </div>
+          <div class="row">
+            <app-text-box mascara='00.000.000/0000-00' class="col-md-4 col-lg-4" maxLength='18' label="CNPJ Dealer"
+              name="cnpjDealer" [(ngModel)]="model.cnpj" obrigatorio="true" required placeholder="CNPJ do dealer...">
+            </app-text-box>
+            <app-text-box [state]="state" class="col-md-8 col-lg-8" maxLength='100' label="Nome Dealer" name="nomeDealer"
+              [(ngModel)]="model.nome" obrigatorio="true" required placeholder="Nome do dealer...">
+            </app-text-box>
+          </div>
+          <div class="row">
+            <app-text-box class="col-md-6 col-lg-6" [state]="state" maxLength='20' label="Inscrição Municipal"
+              name="inscricaoMunicipal" [(ngModel)]="model.inscricaoMunicipal"
+              placeholder="Inscrição municipal do dealer...">
+            </app-text-box>
+            <app-text-box class="col-md-6 col-lg-6" [state]="state" maxLength='20' label="Inscrição Estadual"
+              name="inscricaoEstadual" [(ngModel)]="model.inscricaoEstadual"
+              placeholder="Inscrição estadual do dealer...">
+            </app-text-box>
+          </div>
+        </div>
+      </div>
+      <div id="endereco" aria-labelledby="endereco-tab" class="tab-pane fade" role="tabpanel">
+        <header class="titulo" tabindex="1">Endereço</header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div>
+          <div class="row">
+            <app-text-box [state]="state" mascara="0{5}-0{3}" class="col-md-6 col-lg-3" label="CEP" name="cep"
+              maxLength='9' [(ngModel)]="model.endereco.cep" obrigatorio="true" placeholder="Informe o CEP..."
+              (keyup)="buscarCEP()">
+            </app-text-box>
+          </div>
+          <div class="row">
+            <app-dropdown-list [state]="state" class="col-md-6 col-lg-3" label="País" name="idPais"
+              [(ngModel)]="model.endereco.idPais" obrigatorio="true" [itens]="itensPais">
+            </app-dropdown-list>
+            <app-dropdown-list [state]="state" class="col-md-6 col-lg-3" label="Região" name="idRegiao"
+              [(ngModel)]="model.endereco.idRegiao" obrigatorio="true" [itens]="itensRegiao"
+              (selecionar)="filtrarEstado(model.endereco.idRegiao)">
+            </app-dropdown-list>
+            <app-dropdown-list [state]="state" class="col-md-6 col-lg-3" label="UF" name="idUF"
+              [(ngModel)]="model.endereco.idUF" obrigatorio="true" [itens]="itensUF"
+              (selecionar)="filtrarCidade(model.endereco.idUF)">
+            </app-dropdown-list>
+            <app-dropdown-list [state]="state" class="col-md-6 col-lg-3" label="Cidade" name="idCidade"
+              [(ngModel)]="model.endereco.idCidade" obrigatorio="true" [itens]="itensCidade">
+            </app-dropdown-list>
+          </div>
+          <div class="row">
+            <app-text-box class="col-md-8 col-lg-8" [state]="state" maxLength='100' label="Logradouro" name="logradouro"
+              [(ngModel)]="model.endereco.logradouro" obrigatorio="true" placeholder="Logradouro do endereço...">
+            </app-text-box>
+            <app-text-box class="col-md-4 col-lg-4" [state]="state" maxLength='20' label="Número" name="numeroEndereco"
+              [(ngModel)]="model.endereco.numero" obrigatorio="true" placeholder="Número do endereço...">
+            </app-text-box>
+          </div>
+          <div class="row">
+            <app-text-box class="col-md-6 col-lg-6" [state]="state" maxLength='100' label="Bairro" name="bairro"
+              [(ngModel)]="model.endereco.bairro" obrigatorio="false" placeholder="Bairro...">
+            </app-text-box>
+            <app-text-box class="col-md-6 col-lg-6" [state]="state" maxLength='100' label="Complemento" name="complemento"
+              [(ngModel)]="model.endereco.complemento" placeholder="Complemento do endereço...">
+            </app-text-box>
+          </div>
+        </div>
+      </div>
+      <div id="contato" aria-labelledby="contato-tab" class="tab-pane fade" role="tabpanel">
+        <header class="titulo" tabindex="2">Contatos</header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div>
+          <hr />
+          <h5>Contato</h5>
+          <div class="row">
+            <app-text-box class="col-lg-6" [state]="state" maxLength='100' label="Nome Contato" name="nomeContato"
+              [(ngModel)]="model.contato.nome" obrigatorio="true" placeholder="Nome do contato...">
+            </app-text-box>
+          </div>
+          <div class="row">
+            <app-text-box mascara="0{3}" [state]="state" class="col-md-4 col-lg-2" label="DDD" name="DddContato"
+              [(ngModel)]="model.contato.ddd" obrigatorio="true" placeholder="DDD">
+            </app-text-box>
+            <app-text-box mascara="0{5}-0{4}" [state]="state" class="col-md-8 col-lg-3" label="Telefone Contato"
+              name="telefoneContato" [(ngModel)]="model.contato.telefone" obrigatorio="true"
+              placeholder="Telefone do contato...">
+            </app-text-box>
+            <app-text-box class="col-lg-7" [state]="state" maxLength='100' label="E-mail Contato" name="emailContato"
+              [(ngModel)]="model.contato.email" obrigatorio="true" placeholder="E-mail do contato...">
+            </app-text-box>
+          </div>
+          <hr />
+          <h5>Contato Titular</h5>
+          <div class="row">
+            <app-text-box class="col-lg-6" [state]="state" maxLength='100' label="Nome Contato Titular"
+              name="nomeContatoTitular" [(ngModel)]="model.contatoTitular.nome" obrigatorio="true"
+              placeholder="Nome do contato titular...">
+            </app-text-box>
+          </div>
+          <div class="row">
+            <app-text-box mascara="0{3}" [state]="state" class="col-md-4 col-lg-2" label="DDD" name="DddContatoTitular"
+              [(ngModel)]="model.contatoTitular.ddd" obrigatorio="true" placeholder="DDD">
+            </app-text-box>
+            <app-text-box mascara="0{5}-0{4}" [state]="state" class="col-md-8 col-lg-3" label="Telefone Contato Titular"
+              name="telefoneContatoTitular" [(ngModel)]="model.contatoTitular.telefone" obrigatorio="true"
+              placeholder="Telefone do contato titular...">
+            </app-text-box>
+            <app-text-box class="col-lg-7" [state]="state" maxLength='100' label="E-mail Contato Titular"
+              name="emailContatoTitular" [(ngModel)]="model.contatoTitular.email" obrigatorio="true"
+              placeholder="E-mail do contato titular...">
+            </app-text-box>
+          </div>
+        </div>
+      </div>
+      <div id="jlr" aria-labelledby="jlr-tab" class="tab-pane fade" role="tabpanel">
+        <header class="titulo">Dados JLR</header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div>
+          <div *ngIf="true" class="row">
+            <app-dropdown-list class="col-md-6 col-lg-3" [state]="state" label="Área Manager RAM" name="areaManagerRam"
+              [(ngModel)]="model.jlr.areaManagerRam" placeholder="Área Manager RAM..." [itens]="itensRAM">
+            </app-dropdown-list>
+            <app-dropdown-list class="col-md-6 col-lg-3" [state]="state" label="Área Manager RTM" name="areaManagerRtm"
+              [(ngModel)]="model.jlr.areaManagerRtm" placeholder="Área Manager RTM..." [itens]="itensRTM">
+            </app-dropdown-list>
+            <app-dropdown-list class="col-md-6 col-lg-3" [state]="state" label="Área Manager RBM" name="areaManagerRbm"
+              [(ngModel)]="model.jlr.areaManagerRbm" placeholder="Área Manager RBM..." [itens]="itensRBM">
+            </app-dropdown-list>
+            <app-dropdown-list class="col-md-6 col-lg-3" [state]="state" label="Área Manager MKT" name="areaManagerMkt"
+              [(ngModel)]="model.jlr.areaManagerMkt" placeholder="Área Manager MKT..." [itens]="itensMKT">
+            </app-dropdown-list>
+          </div>
+          <div class="row">
+            <app-dropdown-list class="col-md-6 col-lg-4" [state]="state" label="Grupo Econômico" name="idGrupo"
+              [(ngModel)]="model.jlr.idGrupo" obrigatorio="true" [itens]="itensGrupo">
+            </app-dropdown-list>
+            <app-dropdown-list class="col-md-6 col-lg-4" [state]="state" label="Grupo Importador" name="idGrupoImportador"
+              [(ngModel)]="model.jlr.idGrupoImportador" obrigatorio="true" [itens]="itensGrupoImp">
+            </app-dropdown-list>
+            <app-dropdown-list class="col-md-12 col-lg-4" [state]="state" label="Mercado" name="idMercado"
+              [(ngModel)]="model.jlr.idMercado" obrigatorio="false" [itens]="itensMercado">
+            </app-dropdown-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

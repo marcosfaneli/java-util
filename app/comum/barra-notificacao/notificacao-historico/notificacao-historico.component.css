@@ -1,0 +1,89 @@
+.cabecalho {
+    position: relative;
+    margin: 2% 2% 1% 2%;
+    width: 96%;
+    height:  40px;
+    background-color: white; 
+}
+
+.fundo {
+    position: absolute;
+    width: 100%;
+    height: 615px;
+    border: 3px;
+    border-color: blue;
+    background-color: rgb(233, 231, 231); 
+    overflow: hidden;
+}
+.principal{
+    position: relative;
+    margin: 0% 1% 2% 2%;
+    width: 30%;
+    height: 500px;
+    background-color: white; 
+    float: left;
+    overflow: hidden;
+}
+.mensagem{
+    position: relative;
+    margin: 0% 0% 2% 0%;
+    width: 65%;
+    height: 500px;
+    background-color: white;
+    float: left;
+    overflow: hidden;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+    .titulo-box{
+        position: relative;
+        margin: 20% 1% 2% 1%;
+    } 
+    .botoes-filtros .btn i {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -0.5em;
+        width: 8px !important;
+    }
+    .btn {
+        font-size: 1px !important;
+        position: relative;
+        width: 5px !important;
+        padding-left: 50px;
+        padding-right: 0;
+        overflow: hidden;
+    } 
+}
+
+@media screen and (max-width: 800px) {   
+    .data-mensagem{
+        position: relative;
+        margin: 1% 2% 0% 55%;
+    }
+    .titulo-box{
+        position: relative;
+        margin: 25% 1% 2% 1%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .data-mensagem{
+        position: relative;
+        margin: 1% 2% 0% 45%;
+    }
+    .titulo-box{
+        position: relative;
+        margin: 35% 1% 2% 1%;
+    } 
+}
+
+@media screen and (max-width: 450px) {
+ 
+}
+
+@media screen and (max-width: 400px) {
+    
+}

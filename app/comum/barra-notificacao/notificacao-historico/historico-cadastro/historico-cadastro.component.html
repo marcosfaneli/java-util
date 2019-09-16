@@ -1,0 +1,37 @@
+<div class="mensagem-borda">
+  <div class="row">
+    <div class="col-sm-3">
+         <app-text-box [state]="state" class="col-lg-3" label="Nome" name="nomeDealer" [(ngModel)]="model.nomeDealer" placeholder="Automático" [ativo]="false"> </app-text-box>
+    </div>
+
+    <div class="col-sm-3">
+         <app-text-box [state]="state" class="col-lg-3" mascara='00.000.000/0000-00' label="CNPJ" name="cnpj" [(ngModel)]="model.cnpj" placeholder="Automático" [ativo]="false"> </app-text-box>
+    </div>
+
+    <div class="col-sm-3">
+        <app-text-box [state]="state" class="col-lg-3" label="Numero" name="numeroOs" [(ngModel)]="model.numeroOs" placeholder="Automático" [ativo]="false"> </app-text-box>
+    </div>
+
+    <div class="col-sm-3">
+        <app-text-box [state]="state" class="col-lg-3" label="Tipo OS" name="tipoOs" [(ngModel)]="model.tipoOs" placeholder="Automático" [ativo]="false"> </app-text-box>
+    </div>
+
+  </div>
+</div>
+<div class="mensagem-borda-body">
+  <div class="row">
+      <div class="col-sm-2 titulo-mensagem">
+          Mensagem:
+      </div>
+      <div class="col-sm-2 data-mensagem">
+          <!-- 14/03/2019 -->
+      </div>          
+  </div>
+  
+  <div class="caixa-texto-mensagem texto-mensagem-capt">
+       {{model.veiculoMarca}} 
+    <div class="texto-mensagem">
+       {{model.mensagem}}
+    </div>
+  </div>
+</div>

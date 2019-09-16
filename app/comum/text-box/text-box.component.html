@@ -1,0 +1,5 @@
+<app-input-container [label]="label" [obrigatorio]="obrigatorio">
+  <input [maxlength]="maxLength" [mask]="mascara" [attr.disabled]="getAtivo()?null:'disableb'" #campo type="text"
+    class="form-control form-control-sm" [name]="name" [(ngModel)]="value" [placeholder]="placeholder"
+    autocomplete="false" />
+</app-input-container>

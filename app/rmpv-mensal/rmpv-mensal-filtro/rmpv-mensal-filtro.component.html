@@ -1,0 +1,119 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="rmpv-servico-mensal-filtro">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Definir filtros</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container striped-rows">
+          <div class="row ptb5">
+            <div class="col col-4">
+              Mercado
+            </div>
+            <div class="col col-8">          
+              <select class="form-control form-control-sm" type="text" placeholder="Selecione o Mercado..." [(ngModel)]="Mercado">
+                <option value="">Selecione o Mercado...</option>
+                <option *ngFor="let item of mercados" [value]="item.id">{{item.descricao}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-4">
+              Grupo econômico
+            </div>
+            <div class="col col-8">
+              <select class="form-control form-control-sm" type="text" placeholder="Selecione o grupo econômico..."  [value]="desabilitaDealer()" [(disabled)]="habGrupoEconomico" [(ngModel)]="GrupoEconomico">
+                  <option value="">Selecione o Grupo Econômico...</option>
+                <option *ngFor="let item of gruposEconomicos"  [value]="item.id"> {{item.descricao}} </option>
+              </select>
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-4">
+              Região
+            </div>
+            <div class="col col-8">
+              <select class="form-control form-control-sm" type="number" placeholder="Selecione a Região..."  [value]="desabilitaRegional()" [(disabled)]="habRegiao"  [(ngModel)]="Regiao">
+              <option value="">Selecione a Região...</option>
+              <option *ngFor="let item of regioes" [value]="item.id">{{item.descricao}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-4">
+              Regional
+            </div>
+            <div class="col col-8">
+              <select class="form-control form-control-sm" type="number"  [value]="desabilitaRegiao()" [(disabled)]="habRegional"  [(ngModel)]="Regional">
+                <option value="">Selecione a Regional...</option>
+                <option *ngFor="let item of regionais" [value]="item.id">{{item.descricao}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-4">
+              Dealer
+            </div>
+            <div class="col col-8">
+              <select class="form-control form-control-sm" type="number"  [value]="desabilitaGrupoEconomico()" [(disabled)]="habDealer" [(ngModel)]="Dealer">
+                <option value="">Selecione o Dealer...</option>
+                <option *ngFor="let item of dealers" [value]="item.id">{{item.descricao}}</option>
+              </select>
+            </div>
+          </div>       
+          <div class="row ptb5">
+            <div class="col col-4">
+                Data Inicial
+            </div>
+            <div class="col col-8">
+              <div class="input-group input-group-sm ">
+                  <input class="form-control" class="form-control"  placeholder="Informe a data Inicial..." [(ngModel)]="InicialData" [(ngModel)]="DataInicial" 
+                  [maxDate]="max" ngbDatepicker #dataInicialView="ngbDatepicker" (click)="dataInicialView.toggle()">
+                  <div class="input-group-append"> 
+                    <button class="btn btn-outline-secondary" (click)="dataInicialView.toggle()" type="button"> 
+                      <em class="fa fa-calendar"></em>
+                    </button>
+                  </div>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="limparDataInicial(dataInicialView)" type="button">
+                      <em class="fa fa-trash"></em>
+                    </button>
+                  </div>
+                </div>
+            </div>
+          </div>  
+          <div class="row ptb5">
+            <div class="col col-4">
+              Data Final
+            </div>
+            <div class="col col-8">
+              <div class="input-group input-group-sm ">
+                  <input class="form-control" class="form-control" placeholder="Informe a data final..." [(ngModel)]="FinalData" [(ngModel)]="DataFinal" 
+                  [maxDate]="max" ngbDatepicker #dataFinalView="ngbDatepicker" (click)="dataFinalView.toggle()">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="dataFinalView.toggle()" type="button">
+                      <em class="fa fa-calendar"></em>
+                    </button>
+                  </div>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="limparDataFinal(dataFinalView)" type="button">
+                      <em class="fa fa-trash"></em>
+                    </button>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary"  (click)="Mercado= '' || GrupoEconomico = '' || Regiao = '' || Regional = '' || Dealer = '' || limparDataInicial(dataInicialView) || limparDataFinal(dataFinalView)">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

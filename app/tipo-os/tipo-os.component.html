@@ -1,0 +1,55 @@
+<div class="conteudo">
+  <app-loading [exibir]="carregando"></app-loading>
+  <div style="margin: 0px 0px 8px 0px;">
+    <span *ngFor="let marca of marcas" style="margin: 0px 16px 0px 2px;" [ngStyle]="{'color': marca.cor}">
+      <i class="fa fa-square" aria-hidden="true"></i>
+      {{marca.nome}}
+    </span>
+    <span style="margin: 0px 2px 0px 2px;" [ngStyle]="{'color': 'gray'}">
+      <span class="badge badge-secondary">{{tiposUndefined.length}}</span> Marca não definida
+    </span>
+  </div>
+  <div class="card" *ngFor="let categoria of categorias" style="margin-bottom: 6px;">
+    <h5 class="card-header">{{categoria.descricao}}</h5>
+    <div class="card-body">
+      <p class="card-text">Tipos selecionados para O.S. {{categoria.descricao}}</p>
+      <p class="card-text">
+       
+        <span *ngFor="let tipo of categoria.tipos">
+          <span class="badge badge-dark" style="font-size: 14px" [ngStyle]="{'background-color': tipo.cor}">{{tipo.tipo}}&nbsp;
+            <a href="javascript:;" (click)="removerTipoCategoria(tipo.id, categoria.id)">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+          </span>&nbsp;
+        </span>
+        
+      </p>
+      <button type="button" (click)="adicionarTipo(categoria.id)" class="btn btn-info" data-toggle="modal" data-target="#modalAdicionarTipos">Adicionar</button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalAdicionarTipos" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarTiposLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAdicionarTiposLabel">Adicionar tipo O.S.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Selecione o tipo de O.S. que deseja adicionar para a categoria</p>
+        <span *ngFor="let tipo of tipos">
+          <span class="badge badge-success itemListaSelecao" style="font-size: 14px; margin: 2px;" [ngStyle]="{'background-color': tipo.cor}">{{tipo.tipo}}&nbsp;
+            <a href="javascript:;" (click)="adicionarTipoCategoria(tipo)">
+              <i class="fa fa-plus"></i>
+            </a>
+          </span>
+        </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

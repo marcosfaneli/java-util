@@ -1,0 +1,9 @@
+<app-dropdown-list  
+  label="{{rotulo}}" 
+  name="{{filtro}}" 
+  [(ngModel)]="filtro" 
+  obrigatorio="true" 
+  required 
+  [itens]="itens" 
+  (selecionar)="selecionar(filtro)">
+</app-dropdown-list>

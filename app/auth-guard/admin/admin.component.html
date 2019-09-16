@@ -1,0 +1,36 @@
+<div [class]="fundoImg">
+  <!-- <div class="col-md-6 col-md-offset-3"> -->
+  <div class="login">
+    <h1>Login</h1>
+    <div *ngIf="error" class="alert alert-danger">
+      {{error}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form name="form" (ngSubmit)="f.form.valid && logon()" #f="ngForm" novalidate>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <input type="text" class="form-control" placeholder="Login" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+        <div *ngIf="f.submitted && !username.valid" class="help-block">Login é necessário</div>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <input type="password" class="form-control" placeholder="Senha" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Senha é necessária</div>
+      </div>
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary btn-block btn-large">Entrar</button>
+      </div>
+      <!-- <p class="text-center" style="padding-top: 15px;">
+        <a class="btn-link text-light" routerLink="/login">Acessar como dealer</a>
+      </p> -->
+      <app-loading [exibir]="loading"></app-loading>
+    </form>
+    <br>
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+    <!-- login bootsnipp -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9155049400353686" data-ad-slot="9589048256" data-ad-format="auto"></ins> -->
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<app-barra-crud [state]="state" (salvando)="salvarComValidacao($event)" (voltando)="busca($event)"
+  (inserindo)="novo($event)" (editando)="editar($event)" (excluindo)="excluir($event)" (cancelando)="cancelar($event)"
+  [formValido]="f.valid">
+</app-barra-crud>
+<div class="conteudo cadastro">
+  <form role="form" #f="ngForm" novalidate>
+    <nav class="topo-abas">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a id="dados-principais-tab" href="#dados-principais" aria-controls="dados-principais" aria-selected="true"
+          class="nav-item nav-link active" data-toggle="tab" role="tab">
+          Dados principais
+        </a>
+        <a id="dados-contato-tab" href="#dados-contato" aria-controls="dados-contato" aria-selected="false"
+          class="nav-item nav-link" data-toggle="tab" role="tab">
+          Contato
+        </a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div id="dados-principais" aria-labelledby="dados-principais-tab" class="tab-pane fade show active"
+        role="tabpanel">
+        <header class="titulo">Dados Principais</header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col col-lg-12">
+              <small class="text-info">Campos com (*) são de preenchimento obrigatório.</small>
+              <hr />
+            </div>
+          </div>
+          <div class="row">
+            <app-text-box [state]="state" class="col-lg-4" label="ID" name="idUsuario"
+              [(ngModel)]="model.id" placeholder="Automático" [ativo]="false">
+            </app-text-box>
+          </div>
+          <div class="row">
+            <app-text-box [state]="state" class="col-lg-8" label="Nome" name="nome" [(ngModel)]="model.nome"
+              obrigatorio="true" required placeholder="Informe o nome completo...">
+            </app-text-box>
+          </div>
+          <hr />
+          <div class="row">
+            <app-text-box mascara="000.000.000-00" [state]="state" class="col-lg-4" label="CPF" name="cpf"
+              [(ngModel)]="model.cpf" obrigatorio="true" required placeholder="Informe o CPF...">
+            </app-text-box>
+
+            <app-dropdown-list-api [state]="state" class="col-lg-4" label="Função" name="funcao"
+              [(ngModel)]="model.funcao" obrigatorio="true" required filtro="funcao">
+            </app-dropdown-list-api>
+
+            <app-dropdown-list [state]="state" class="col-lg-4" label="Status" name="ativo" [(ngModel)]="model.ativo"
+              obrigatorio="true" required [itens]="itensAtivo">
+            </app-dropdown-list>
+          </div>
+          <hr />
+          <div class="row">
+            <app-text-box [state]="state" class="col-lg-4" label="Defina o login de acesso" name="login"
+              [(ngModel)]="model.login" obrigatorio="true" required placeholder="Informe o login...">
+            </app-text-box>
+          </div>
+          <hr />
+          <div class="row" *ngIf="state != 1">
+            <div class="form-group col-lg-6">
+              <label class="control-label">Solicitar redefinição de senha: </label>
+              <br />
+              <button class="btn btn-success" [disabled]="state != 0" (click)="solicitarRedefinicaoSenha()">
+                <i class="fa fa-envelope"></i>
+                Enviar e-mail
+              </button>
+              <span class="help-block" *ngIf="state != 0">
+                <small class="form-text" style="color: #ff0000">
+                  * Não pode ser enviado um e-mail quando o usuário está em edição
+                </small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="dados-contato" aria-labelledby="dados-contato-tab" class="tab-pane fade" role="tabpanel">
+        <header class="titulo">Contato</header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="form-group col-lg-12">
+              <small class="form-text text-muted">Campos com (*) são de preenchimento obrigatório.</small>
+            </div>
+          </div>
+          <div class="row">
+            <app-text-box [state]="state" class="col-lg-6" label="E-mail" name="email" [(ngModel)]="model.email"
+              placeholder="fulano@fulano.com" [ativo]="true">
+            </app-text-box>
+          </div>
+          <div class="row">
+            <app-text-box mascara="0{3}" [state]="state" class="col-lg-2" label="DDD" name="ddd" [(ngModel)]="model.ddd"
+              obrigatorio="true" required placeholder="Informe o DDD...">
+            </app-text-box>
+
+            <app-text-box mascara="0{5}-0{4}" [state]="state" class="col-lg-4" label="Telefone" name="telefone"
+              [(ngModel)]="model.telefone" obrigatorio="true" required placeholder="Informe o telefone...">
+            </app-text-box>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

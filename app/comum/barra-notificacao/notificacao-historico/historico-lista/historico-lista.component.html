@@ -1,0 +1,24 @@
+<div class="conteudo">
+        <div *ngIf="!carregando">
+              <app-gridview   
+              [ExibirBotaoDetalhes]="exibirBotaoDetalhes"
+              [totalInterna]="visualizarTotalInterna"
+              [totalGeral]="visualizarTotalGeral"
+              [visualizarTotalRegistros]="visualizarTotalRegistros"
+              [PaginaAtual]="paginaAtual"
+              [QuantidadeRegistrosPagina]="quantidadeRegistrosPagina"
+              [Paginacao]="listagemComPaginacao"
+              [Estrutura]="estrutura"
+              [Dados]="dados"
+              [Borda]="false"
+              [EstruturaInterna]="estruturaInterna"
+              [EstruturaTotal]="estruturaTotal" 
+              [total_registros]="total_registros" 
+              
+              (ver)="ver($event)" 
+              (mudarQuantidadePorPagina)="mudarQuantidadePorPagina($event)" 
+              (mudarPaginaAtual)="mudarPaginaAtual($event)"
+            >
+            </app-gridview>
+        </div>
+</div>

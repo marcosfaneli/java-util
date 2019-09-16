@@ -1,0 +1,14 @@
+<div *ngIf="selecionado">
+  <app-grupo-importador-cadastro
+    [model]="selecionado"
+    (buscar)="buscar($event)"
+    [state]="state">
+  </app-grupo-importador-cadastro> 
+</div>
+<div *ngIf="!selecionado">
+  <app-grupo-importador-filtro [filtros]="filtros"></app-grupo-importador-filtro>
+  <app-grupo-importador-lista [filtros]="filtros"  
+  (exibir)="selecionar($event)"  
+  (definirFiltro)="definirFiltro()">
+  </app-grupo-importador-lista>
+</div>

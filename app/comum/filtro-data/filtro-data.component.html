@@ -1,0 +1,10 @@
+<app-input-container [label]="rotulo" [obrigatorio]="obrigatorio">
+  <div class="input-group">
+    <input class="form-control" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="data" ngbDatepicker #d="ngbDatepicker">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+        <img src="assets/img/calendar.png" class="img-calendar" />
+      </button>
+    </div>
+  </div>
+</app-input-container>

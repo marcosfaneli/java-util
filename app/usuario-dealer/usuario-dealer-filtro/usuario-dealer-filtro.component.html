@@ -1,0 +1,75 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="usuario-dealer-filtro">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Definir filtros</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container striped-rows">
+          <div class="row ptb5">
+            <div class="col col-4">
+              ID
+            </div>
+            <div class="col col-8">
+              <input class="form-control form-control-sm" type="number" placeholder="Informe o ID..." [(ngModel)]="filtros.id">
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-4">
+              Dealer
+            </div>
+            <div class="col col-8">
+              <input class="form-control form-control-sm" type="text" placeholder="Informe o dealer..." [(ngModel)]="filtros.dealer">
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-4">
+              Nome
+            </div>
+            <div class="col col-8">
+              <input class="form-control form-control-sm" type="text" placeholder="Informe o nome..." [(ngModel)]="filtros.nome">
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-4">
+              Login
+            </div>
+            <div class="col col-8">
+              <input class="form-control form-control-sm" type="text" placeholder="Informe o login..." [(ngModel)]="filtros.login">
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-4">
+              E-mail
+            </div>
+            <div class="col col-8">
+              <input class="form-control form-control-sm" type="mail" placeholder="Informe o e-mail..." [(ngModel)]="filtros.email">
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-12">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="somenteAtivo" [(ngModel)]="filtros.somente_ativo">
+                <label class="custom-control-label" for="somenteAtivo">Somente ativos</label>
+              </div>
+            </div>
+          </div>
+          <div class="row ptb5">
+            <div class="col col-12">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="somenteInativo" [(ngModel)]="filtros.somente_inativo">
+                <label class="custom-control-label" for="somenteInativo">Somente inativos</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

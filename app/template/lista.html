@@ -1,0 +1,38 @@
+<app-barra-consulta
+  *ngIf="!carregando" visible="false"
+  [listagemComFiltros]="getListagemComFiltros()"
+  (atualizando)="atualizar($event)"
+  (inserindo)="novo($event)"
+  (definirFiltro)="definirFiltragem()"
+  [exibirNovo]="exibirBotaoNovo"
+  [exibirBotaoAjuda]="exibirBotaoAjuda"
+  [exibirBarraCor]="exibirBarraCor"
+  [exibirBotaoDefinirFiltros]="exibirBotaoDefinirFiltros">
+
+</app-barra-consulta>
+<div class="conteudo">
+  <app-loading [exibir]="carregando"></app-loading>
+  <div *ngIf="!carregando">
+    <app-gridview   
+      [ExibirBotaoDetalhes]="exibirBotaoDetalhes"
+      [ExibirBotaoDetalhesIcon]="exibirBotaoDetalhesIcon"
+      [NomeModulo]="nomeModulo" 
+      [totalInterna]="visualizarTotalInterna"
+      [totalGeral]="visualizarTotalGeral"
+      [visualizarTotalRegistros]="visualizarTotalRegistros"
+      [PaginaAtual]="paginaAtual"
+      [QuantidadeRegistrosPagina]="quantidadeRegistrosPagina"
+      [Paginacao]="listagemComPaginacao"
+      [Estrutura]="estrutura"
+      [Dados]="dados"
+      [Borda]="false"
+      [EstruturaInterna]="estruturaInterna"
+      [EstruturaTotal]="estruturaTotal" 
+      [total_registros]="total_registros" 
+      
+      (ver)="ver($event)" 
+      (mudarQuantidadePorPagina)="mudarQuantidadePorPagina($event)" 
+      (mudarPaginaAtual)="mudarPaginaAtual($event)">
+    </app-gridview>
+  </div>
+</div>

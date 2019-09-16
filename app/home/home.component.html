@@ -1,0 +1,235 @@
+<div class="conteudo">
+  <app-loading [exibir]="carregando"></app-loading>  
+  <div class="container-fluid cartoes">
+    <div class="row faixa-conteudo pt0">
+      <div class="col col-lg-12">
+        <div class="caixa">
+          <div class="conteudo-caixa-sem-titulo sem-padding">
+            <div class="filtro-dash">
+              <div class="filtro" *ngFor="let marca of filtroMarcas">
+                <label [for]="'checkbox' + marca.id" class="btn btn-outline-success btn-sm">
+                  <input [id]="'checkbox' + marca.id" type="checkbox" [checked]="marca.selecionado" (click)="marcar(marca)" />
+                  <i class="marcado fa fa-check"></i>
+                  <i class="desmarcado fa fa-square-o"></i>
+                  {{marca.nome}}
+                </label>
+              </div>
+              <div class="botao">
+                <button class="btn btn-info btn-sm" (click)="atualizarFiltroMarcas()">
+                  <i class="fa fa-search"></i> Buscar
+                </button>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </div>          
+        <div class="periodo-dash">
+          Referente ao período: {{dados?.periodo?.inicio | date:'dd/MM/yyyy'}} - {{dados?.periodo?.fim | date:'dd/MM/yyyy'}}
+        </div>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col col-lg-3">
+        <div class="cartao pecas">
+          <div class="caption">Peças (R$)</div>
+          <div class="valor">
+            <ng2-odometer [number]="dados.valor_pecas" [config]="configShowNumber"></ng2-odometer>
+          </div>
+          <div class="caption-bottom"><ng2-odometer [number]="dados.percentual_pecas" [config]="configShowNumber"></ng2-odometer>%</div>
+        </div>
+      </div>
+      <div class="col col-lg-3">
+        <div class="cartao sucesso">
+          <div class="caption">Mão de Obra (R$)</div>
+          <div class="valor">
+            <ng2-odometer [number]="dados.valor_mao_obra" [config]="configShowNumber"></ng2-odometer>
+          </div>
+          <div class="caption-bottom"><ng2-odometer [number]="dados.percentual_mao_obra" [config]="configShowNumber"></ng2-odometer>%</div>
+        </div>
+      </div>
+      <div class="col col-lg-3">
+        <div class="cartao acessorios">
+          <div class="caption">Acessórios (R$)</div>
+          <div class="valor">
+            <ng2-odometer [number]="dados.valor_acessorios" [config]="configShowNumber"></ng2-odometer>
+          </div>
+          <div class="caption-bottom"><ng2-odometer [number]="dados.percentual_acessorios" [config]="configShowNumber"></ng2-odometer>%</div>
+        </div>
+      </div>
+      <div class="col col-lg-3">
+        <div class="cartao">
+          <div class="caption">Total (R$)</div>
+          <div class="valor">
+            <ng2-odometer [number]="dados.total" [config]="configShowNumber"></ng2-odometer>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <div class="row faixa-conteudo">
+      <div class="col col-lg-4">
+        <div class="caixa h-100">
+          <div class="text-center titulo">O.S. aberta</div>
+          <div class="conteudo-caixa p0">
+            <div class="dados-valor-kpi">
+              <div class="dado">
+                <div class="icone">
+                  <em class="fa fa-ticket"></em>
+                </div>
+                <div class="texto">
+                  <span class="quatidade">
+                    <ng2-odometer [number]="dados.quantidade_os_aberta" [config]="configShowNumber"></ng2-odometer>
+                  </span>
+                  Quantidade
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="dado cor2">
+                <div class="icone">
+                  <em class="fa fa-usd"></em>
+                </div>
+                <div class="texto">
+                  <span class="quatidade">
+                    <ng2-odometer [number]="dados.valor_os_aberta" [config]="configShowNumber"></ng2-odometer>
+                  </span>
+                  Valor
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+      <div class="col col-lg-4">
+        <div class="caixa h-100">
+          <div class="text-center titulo">O.S. fechada</div>
+          <div class="conteudo-caixa p0">
+            <div class="dados-valor-kpi">
+              <div class="dado">
+                <div class="icone">
+                  <em class="fa fa-ticket"></em>
+                </div>
+                <div class="texto">
+                  <span class="quatidade">
+                    <ng2-odometer [number]="dados.quantidade_os_fechada" [config]="configShowNumber"></ng2-odometer>
+                  </span>
+                  Quantidade
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="dado cor2">
+                <div class="icone">
+                  <em class="fa fa-usd"></em>
+                </div>
+                <div class="texto">
+                  <span class="quatidade">
+                    <ng2-odometer [number]="dados.valor_os_fechada" [config]="configShowNumber"></ng2-odometer>
+                  </span>
+                  Valor
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+      <div class="col col-lg-4">
+          <div class="caixa h-100">
+            <div class="conteudo-caixa-chartPie"> 
+            <canvas baseChart #chartValores="base-chart" class="canvas"
+            [colors]="[{}]"
+            [datasets]="chartValoresData"
+            [labels]="chartValoresLabels"
+            [options]="chartValoresOptions"
+            [chartType]="chartValoresType"
+            [legend]="chartValoresLegend"
+            (chartHover)="chartValoresHovered($event)"
+            (chartClick)="chartValoresClicked($event)"
+            ></canvas> 
+          </div>      
+        </div>  
+      </div>
+    </div>  
+    <div class="row faixa-conteudo">
+      <div class="col col-lg-6">
+        <div class="caixa ">
+          <div class="text-center titulo">Aberturas de ordens de serviço</div>
+          <div class="conteudo-caixa">            
+            <nav class="topo-abas">
+              <div class="nav nav-tabs" role="tablist">
+                <a id="quantidade-aberta-tab" href="#quantidade-aberta" aria-controls="quantidade-aberta" aria-selected="true" class="nav-item nav-link active" data-toggle="tab" role="tab">
+                  Quantidade
+                </a>
+                <a id="valor-aberta-tab" href="#valor-aberta" aria-controls="valor-aberta" aria-selected="true" class="nav-item nav-link" data-toggle="tab" role="tab">
+                  Valor
+                </a>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div id="quantidade-aberta" aria-labelledby="quantidade-aberta-tab" class="grafico tab-pane fade show active pt10" role="tabpanel">
+                <canvas baseChart #chartQuantidadeAberturaOS="base-chart"
+                [datasets]="chartQuantidadeAberturaOSData"
+                [labels]="chartQuantidadeAberturaOSLabels"
+                [options]="chartQuantidadeAberturaOSOptions"
+                [chartType]="chartQuantidadeAberturaOSType"
+                [legend]="chartQuantidadeAberturaOSLegend"
+                (chartHover)="chartQuantidadeAberturaOSHovered($event)"
+                (chartClick)="chartQuantidadeAberturaOSClicked($event)"
+                ></canvas>
+              </div>
+              <div id="valor-aberta" aria-labelledby="valor-aberta-tab" class="grafico tab-pane fade show pt10" role="tabpanel">
+                <canvas baseChart #chartValorAberturaOS="base-chart"
+                [datasets]="chartValorAberturaOSData"
+                [labels]="chartValorAberturaOSLabels"
+                [options]="chartValorAberturaOSOptions"
+                [chartType]="chartValorAberturaOSType"
+                [legend]="chartValorAberturaOSLegend"
+                (chartHover)="chartValorAberturaOSHovered($event)"
+                (chartClick)="chartValorAberturaOSClicked($event)"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div> 
+      <div class="col col-lg-6">
+        <div class="caixa">
+          <div class="text-center titulo"> Fechamentos de ordens de serviço </div>
+          <div class="conteudo-caixa">            
+            <nav class="topo-abas">
+              <div class="nav nav-tabs" role="tablist">
+                <a id="quantidade-fechada-tab" href="#quantidade-fechada" aria-controls="quantidade-fechada" aria-selected="true" class="nav-item nav-link active" data-toggle="tab" role="tab">
+                  Quantidade
+                </a>
+                <a id="valor-fechada-tab" href="#valor-fechada" aria-controls="valor-fechada" aria-selected="true" class="nav-item nav-link" data-toggle="tab" role="tab">
+                  Valor
+                </a>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div id="quantidade-fechada" aria-labelledby="quantidade-fechada-tab" class="grafico tab-pane fade show active pt10" role="tabpanel">
+                <canvas baseChart #chartQuantidadeFechamentoOS="base-chart"
+                [datasets]="chartQuantidadeFechamentoOSData"
+                [labels]="chartQuantidadeFechamentoOSLabels"
+                [options]="chartQuantidadeFechamentoOSOptions"
+                [chartType]="chartQuantidadeFechamentoOSType"
+                [legend]="chartQuantidadeFechamentoOSLegend"
+                (chartHover)="chartQuantidadeFechamentoOSHovered($event)"
+                (chartClick)="chartQuantidadeFechamentoOSClicked($event)"></canvas>
+              </div>
+              <div id="valor-fechada" aria-labelledby="valor-fechada-tab" class="grafico tab-pane fade show pt10" role="tabpanel">
+                <canvas baseChart #chartValorFechamentoOS="base-chart"
+                [datasets]="chartValorFechamentoOSData"
+                [labels]="chartValorFechamentoOSLabels"
+                [options]="chartValorFechamentoOSOptions"
+                [chartType]="chartValorFechamentoOSType"
+                [legend]="chartValorFechamentoOSLegend"
+                (chartHover)="chartValorFechamentoOSHovered($event)"
+                (chartClick)="chartValorFechamentoOSClicked($event)"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div> 
+  </div>
+</div>
+

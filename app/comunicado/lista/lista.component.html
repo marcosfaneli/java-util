@@ -1,0 +1,25 @@
+<div 
+  *ngFor="let item of comunicados" 
+  class="comunicado-item table-hover" 
+  [ngStyle]="getCor(item.lido)"
+  (click)="exibir(item.id)">
+  <div class="row">
+    <div class="col comunicado-assunto">
+      {{item.assunto}}
+    </div>
+    <div class="w-100"></div>
+    <div class="col" style="font-size: 0.6rem;">{{item.remetente.nome}}</div>
+    <div class="w-100"></div>
+    <div class="col" style="font-size: 0.9rem;">
+      <i *ngIf="item.tipo == 0" class="fa fa-commenting" aria-hidden="true"></i>
+      <i *ngIf="item.tipo != 0" class="fa fa-history" aria-hidden="true"></i>
+    </div>
+    <div *ngIf="item.anexos.length > 0" class="col" style="font-size: 0.9rem;">
+      <span style="font-size: 0.7rem;">({{item.anexos.length}})</span> 
+      <i class="fa fa-paperclip" aria-hidden="true"></i>
+    </div>
+    <div class="col-7 date-align" style="font-size: 0.6rem">
+      {{item.enviado | date}}
+    </div>
+  </div>
+</div>

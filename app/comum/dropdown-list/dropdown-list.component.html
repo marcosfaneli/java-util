@@ -1,0 +1,6 @@
+<app-input-container [label]="label" [obrigatorio]="obrigatorio" [valorVazio]="valorVazio">
+  <select #campo class="form-control form-control-sm" [name]="name" [(ngModel)]="value" autocomplete="off" [attr.disabled]="getAtivo()?null:'disableb'" (change)="seleciona()">
+    <option value="" [selected]="value === ''">Selecione....</option> 
+    <option *ngFor="let item of itens"  [value]="item.valor" [selected]="value === item.valor">{{item.texto}}</option>
+  </select>
+</app-input-container>

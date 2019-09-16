@@ -1,0 +1,66 @@
+<div class="color-bar"></div>
+<div *ngIf="!carregando" class="container-fluid">
+  <app-loading [exibir]="carregando"></app-loading>
+
+  <div class="auto">
+    <!-- <div class="controler-Bar"> -->
+    <div class="row row-position">
+      <div class="float-right button-size" role="group">
+        <button type="button new-button" class="btn btn-primary" (click)="novoComunicado()"
+          (click)="ativaComunicado = false">
+          <em class="fa fa-plus" aria-hidden="true"></em>
+          Novo
+        </button>
+        <a type="button help-button" class="btn btn-outline-primary" href="http://ajuda.nbsi.com.br:84/"
+          target="_blank">
+          <em class="fa fa-question"></em>
+          Ajuda
+        </a>
+      </div>
+
+    </div>
+    <!-- </div> -->
+  </div>
+
+
+
+  <div class="row backgroud-color-white">
+    <div *ngIf="ativaComunicado" class="col-md-04 alinhamento-box">
+      <div class="auto" class="menu cor">
+        <div class="w-100 titulo-mensagem">
+          <b> {{totalDeRegistros}} Comunicados: </b>
+        </div>
+        <app-lista [comunicados]="comunicados" (selecionado)="exibir($event)"></app-lista>
+        <div class="w-100 footer bottom">
+          <div class="row footer">
+            <div class="col">
+              {{paginaAtual}} de {{quantidadeDePaginas}}
+            </div>
+            <div class="col footer">
+              <a href="javascript:void(0)" (click)="irParaPagina(paginaAtual - 1)">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div class="col footer">
+              <a href="javascript:void(0)" (click)="irParaPagina(paginaAtual + 1)">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 new-mensagem">
+      <div class="btn-group float-right newButton mensagem" role="group" style="margin: 4px 0px 8px 0px;">
+        <button type="button" (click)="marcarComoNaoLido(selecionado)" class="btn btn-secondary" *ngIf="selecionado" title="Marcar como não lido.">
+          <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <app-novo [ativo]="getEstado()" (salvado)="setEstado($event)" (ativaComunicado)="setEstadoComunicado($event)"
+        class="mensagem"></app-novo>
+      <app-exibir [comunicado]="selecionado"></app-exibir>
+    </div>
+  </div>
+
+</div>

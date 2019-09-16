@@ -1,0 +1,144 @@
+<div class="color-bar"></div>
+<div class="conteudo">
+  <div class="container-fluid cartoes" style="background-color: #fff;">
+    <div *ngIf="!idOs">
+      <div class="row faixa-conteudo pt0">
+        <div class="col col-lg-12">
+          <div class="caixa">
+            <div class="conteudo-caixa-sem-titulo sem-padding">
+              <div class="filtro-dash">
+                <div>
+                  <div class="filtro ng-star-inserted" style="margin: 10px 25px 0px 0px;">
+                    Marcas:
+                  </div>
+                  <span class="btn btn-outline-success btn-sm" *ngFor="let marca of filtroMarcas.selecionados()"
+                    style="margin: 6px 2px 0px 2px;">
+                    {{marca.nome}}
+                    <i class="fa fa-times" aria-hidden="true" (click)="removerMarca(marca)"></i>
+                  </span>
+                  <div class="botao">
+                    <button class="btn btn-info btn-sm" (click)="selecionarMarcas()">
+                      <em class="fa fa-plus"></em>
+                    </button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <hr>
+                <div>
+                  <div class="filtro ng-star-inserted" style="margin: 10px 10px 0px 0px;">
+                    Tipos O.S.:
+                  </div>
+                  <span class="btn btn-outline-success btn-sm" *ngFor="let tipo of filtroTipoOs.selecionados()"
+                    style="margin: 6px 2px 0px 2px;" (click)="removerTipoOs(tipo)">
+                    {{tipo.nome}}
+                    <i class="fa fa-times" aria-hidden="true" (click)="removerTipoOs(tipo)"></i>
+                  </span>
+                  <div class="botao">
+                    <button class="btn btn-info btn-sm" (click)="selecionarTipoOs()">
+                      <em class="fa fa-plus"></em>
+                    </button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <hr>
+                <div>
+                  <div class="filtro ng-star-inserted" style="margin: 10px 22px 0px 0px;">
+                    Dealers:
+                  </div>
+                  <span class="btn btn-outline-success btn-sm" *ngFor="let dealer of filtroDealers.selecionados()"
+                    style="margin: 6px 2px 0px 2px; text-transform: uppercase;" (click)="removerDealer(dealer)">
+                    {{dealer.nome}}
+                    <i class="fa fa-times" aria-hidden="true" (click)="removerDealer(dealer)"></i>
+                  </span>
+                  <div class="botao">
+                    <button class="btn btn-info btn-sm" (click)="selecionarDealer()">
+                      <em class="fa fa-plus"></em>
+                    </button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </div>
+              <hr>
+              <div class="row ptb50">
+                <div class="col col-md-5">
+                  <div class="filtro ng-star-inserted" style="margin: 0px 10px 0px 0px;">
+                    Data Inicial:
+                  </div>
+                  <div class="input-group input-group-sm data-fixo">
+                    <input class="form-control" class="form-control" placeholder="Informe a data inicial..." readonly
+                      [(ngModel)]="dataInicial" [maxDate]="max" ngbDatepicker #dataInicialView="ngbDatepicker"
+                      (click)="dataInicialView.toggle()">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" (click)="dataInicialView.toggle()" type="button">
+                        <em class="fa fa-calendar"></em>
+                      </button>
+                    </div>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" (click)="limparDataInicial(dataInicialView)"
+                        type="button">
+                        <em class="fa fa-trash"></em>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col col-md-5">
+                    <div class="filtro ng-star-inserted" style="margin: 0px 10px 0px 0px;">
+                      Data Final:
+                    </div>
+                    <div class="input-group input-group-sm data-fixo">
+                      <input class="form-control" class="form-control" placeholder="Informe a data final..." readonly
+                        [(ngModel)]="dataFinal" [maxDate]="max" ngbDatepicker #dataFinalView="ngbDatepicker"
+                        (click)="dataFinalView.toggle()">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" (click)="dataFinalView.toggle()" type="button">
+                          <em class="fa fa-calendar"></em>
+                        </button>
+                      </div>
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" (click)="limparDataFinal(dataFinalView)" type="button">
+                          <em class="fa fa-trash"></em>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+              </div>     
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-lg-12">
+          <button class="btn" type="button" [class.btn-info]="!getListagemComFiltros()"
+            [class.btn-warning]="getListagemComFiltros()" (click)="definirFiltro();">
+            Mais filtros
+            <em class="fa fa-filter"></em>
+          </button>
+          <button class="btn btn-success my-2 my-sm-0" type="button" (click)="pesquisar()">
+            Filtrar
+            <em class="fa fa-search"></em>
+          </button>
+        </div>
+      </div>
+      <app-rmpv-detalhado-filtro (definirFiltro)="definirFiltro()" [filtros]="filtros"></app-rmpv-detalhado-filtro>
+      <app-rmpv-detalhado-lista (exibir)="selecionar($event)" (os)="exibirOs($event)" [carregar]="filtrar()">
+      </app-rmpv-detalhado-lista>
+    </div>
+    <div *ngIf="idOs">
+       <div class="float-top-right">
+        <div class="btn-group btn-group-toggle barra" data-toggle="buttons">
+          <label class="btn btn-secondary" (click)="voltar()">
+            <em class="fa fa-arrow-left"></em> Voltar
+          </label>
+        </div>
+      </div>
+      <app-os [id]="idOs"></app-os>
+    </div>
+  </div>
+</div>
+<app-selecionar [idModal]="'modal-marcas'" [titulo]="'Selecione as marcas'" [lista]="filtroMarcas.naoSelecionados()"
+  (escolhido)="onAdicionarMarcaFiltro($event)"></app-selecionar>
+<app-selecionar [idModal]="'modal-tipo-os'" [titulo]="'Selecione os Tipos de O.S.'"
+  [lista]="filtroTipoOs.naoSelecionados()" (escolhido)="onAdicionarTipoOsFiltro($event)"></app-selecionar>
+<app-selecionar [idModal]="'modal-dealers'" [titulo]="'Selecione os Dealers'" [lista]="filtroDealers.naoSelecionados()"
+  (escolhido)="onAdicionarDealerFiltro($event)"></app-selecionar>

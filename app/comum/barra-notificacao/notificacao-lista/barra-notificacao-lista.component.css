@@ -1,0 +1,43 @@
+.color-novo{
+    color: #1dc9b7 !important;
+}
+.color-historico{
+    color: #fd397a !important
+}
+
+
+.notificacao-mensagem-icon{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 1% 5% 0% 5%;
+    max-width: 20px;
+    float: left;
+}
+.espacamento {
+    width: 240px;
+    margin: 0% 1% 1% 1%;
+    padding: 0% 0% 0% 1%;
+    vertical-align: middle !important;
+}
+.espacamentoIcon {
+    margin: 30% 0% 1% 1%;
+    padding: 0% 0% 0% 10px;
+    vertical-align: middle !important;
+   }
+.fontMensagem {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.1em;
+}
+.fontMensagemDetalhe {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 0.8em !important;
+    padding: 0% 0% 0% 10px !important;
+}
+.espacamento:hover {
+    color: rgb(236, 236, 236);
+}

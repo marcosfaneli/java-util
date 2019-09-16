@@ -1,0 +1,40 @@
+<app-barra-crud 
+  [state]="state" 
+  (salvando)="salvar($event)" 
+  (voltando)="busca($event)" 
+  (inserindo)="novo($event)" 
+  (editando)="editar($event)"
+  (excluindo)="excluir($event)" 
+  (cancelando)="cancelar($event)"
+  [formValido]="f.valid">
+</app-barra-crud>
+<div class="conteudo cadastro">
+  <form role="form" #f="ngForm" novalidate>
+    <nav class="topo-abas">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a id="dados-principais-tab" href="#dados-principais" aria-controls="dados-principais" aria-selected="true" class="nav-item nav-link active" data-toggle="tab" role="tab">
+          Dados principais
+        </a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div id="dados-principais" aria-labelledby="dados-principais-tab" class="tab-pane fade show active" role="tabpanel">
+        <header class="titulo">Dados Principais</header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col col-lg-12">
+              <small class="text-info">Campos com (*) são de preenchimento obrigatório.</small>
+              <hr/>
+            </div>
+          </div>
+           <div class="row">
+            <app-dropdown-list [state]="state" class="col-lg-3" label="Usuário" name="idUsuario" [(ngModel)]="model.usuario.id" obrigatorio="true" required  [itens]="itensUsuarioFabrica" [ativo]="true" ></app-dropdown-list>
+          </div>
+          <div class="row">
+            <app-dropdown-list [state]="state" class="col-lg-3" label="Região" name="idRegiao" [(ngModel)]="model.regiao.id" obrigatorio="true" required [itens]="itensRegiao" [ativo]="habilita" ></app-dropdown-list>
+          </div>      
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

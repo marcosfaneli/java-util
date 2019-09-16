@@ -1,0 +1,15 @@
+<div *ngIf="selecionado">
+  <app-regional-cadastro
+    [model]="selecionado"
+    (buscar)="buscar($event)"
+    [state]="state">
+  </app-regional-cadastro>
+</div>
+<div *ngIf="!selecionado">
+  <app-regional-filtro [filtros]="filtros"></app-regional-filtro>
+  <app-regional-lista 
+  [filtros]="filtros"
+  (exibir)="selecionar($event)"  
+  (definirFiltro)="definirFiltro()">
+  </app-regional-lista>
+</div>

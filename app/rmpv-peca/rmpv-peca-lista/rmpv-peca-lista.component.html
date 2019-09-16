@@ -1,0 +1,134 @@
+<app-barra-consulta
+  *ngIf="!carregando" visible="false"
+  [listagemComFiltros]="getListagemComFiltros()"
+  (atualizando)="atualizar($event)"
+  (inserindo)="novo($event)"
+  (definirFiltro)="definirFiltragem()"
+  [exibirNovo]="exibirBotaoNovo"
+  [detalhe]="detalhe">
+</app-barra-consulta>
+<div class="conteudo">
+  <app-loading [exibir]="carregando"></app-loading>
+  <div *ngIf="!carregando">
+    <app-gridview   
+      [ExibirBotaoDetalhes]="exibirBotaoDetalhes"
+      [ExibirBotaoDetalhesIcon]="exibirBotaoDetalhesIcon"
+      [NomeModulo]="nomeModulo" 
+      [totalInterna]="visualizarTotalInterna"
+      [totalGeral]="visualizarTotalGeral"
+      [visualizarTotalRegistros]="visualizarTotalRegistros"
+      [PaginaAtual]="paginaAtual"
+      [QuantidadeRegistrosPagina]="quantidadeRegistrosPagina"
+      [Paginacao]="listagemComPaginacao"
+      [Borda]="false"
+      [total_registros]="total_registros" 
+
+      [Dados]="dados"
+      [Estrutura]="estrutura"
+      [EstruturaTotal]="estruturaTotal"
+      [EstruturaInterna]="estruturaInterna"
+      [ListagemComFiltros]="listagemComFiltros" 
+      
+      (ver)="ver($event)" 
+      (mudarQuantidadePorPagina)="mudarQuantidadePorPagina($event)" 
+      (mudarPaginaAtual)="mudarPaginaAtual($event)"
+    >
+    </app-gridview>
+    <div *ngIf="habilitaDetalheLandRover">
+      <div class="botaoNomeDealer"> 
+        <em class="fa fa-file-text-o"></em>
+        &nbsp;&nbsp;&nbsp;&nbsp; Land Rover &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="javascript:;" (click)="ocultarLandRover()">
+          <em class="fa fa-caret-square-o-up"></em>
+        </a>
+      </div>
+      <app-gridview 
+        [ExibirBotaoDetalhes]="exibirBotaoDetalhes"
+        [ExibirBotaoDetalhesIcon]="exibirBotaoDetalhesIcon"
+        [NomeModulo]="nomeModulo" 
+        [totalInterna]="visualizarTotalInterna"
+        [totalGeral]="visualizarTotalGeral"
+        [visualizarTotalRegistros]="visualizarTotalRegistros"
+        [PaginaAtual]="paginaAtual"
+        [QuantidadeRegistrosPagina]="quantidadeRegistrosPagina"
+        [Paginacao]="listagemComPaginacao"
+        [Borda]="false"
+        [total_registros]="total_registros"
+
+        [Dados]="dadosLandRover"
+        [Estrutura]="estruturaDetalhe"
+        [EstruturaTotal]="estruturaDetalheTotal"
+        [ListagemComFiltros]="listagemComFiltros" 
+        
+        (ver)="ver($event)" 
+        (mudarQuantidadePorPagina)="mudarQuantidadePorPagina($event)" 
+        (mudarPaginaAtual)="mudarPaginaAtual($event)"
+      >
+      </app-gridview>
+    </div>
+    <div *ngIf="habilitaDetalheJaguar">
+      <div class="botaoNomeDealer"> 
+        <em class="fa fa-file-text-o"></em>
+        &nbsp;&nbsp;&nbsp;&nbsp; Jaguar &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="javascript:;" (click)="ocultarJaguar()">
+          <em class="fa fa-caret-square-o-up"></em>
+        </a>
+      </div>
+      <app-gridview
+        [ExibirBotaoDetalhes]="exibirBotaoDetalhes"
+        [ExibirBotaoDetalhesIcon]="exibirBotaoDetalhesIcon"
+        [NomeModulo]="nomeModulo" 
+        [totalInterna]="visualizarTotalInterna"
+        [totalGeral]="visualizarTotalGeral"
+        [visualizarTotalRegistros]="visualizarTotalRegistros"
+        [PaginaAtual]="paginaAtual"
+        [QuantidadeRegistrosPagina]="quantidadeRegistrosPagina"
+        [Paginacao]="listagemComPaginacao"
+        [Borda]="false"
+        [total_registros]="total_registros"
+
+        [Dados]="dadosJaguar"
+        [Estrutura]="estruturaDetalhe"
+        [EstruturaTotal]="estruturaDetalheTotal"
+        [ListagemComFiltros]="listagemComFiltros" 
+        
+        (ver)="ver($event)" 
+        (mudarQuantidadePorPagina)="mudarQuantidadePorPagina($event)" 
+        (mudarPaginaAtual)="mudarPaginaAtual($event)"
+      >
+      </app-gridview>
+    </div>
+    <div *ngIf="habilitaDetalheJlr">
+      <div class="botaoNomeDealer"> 
+        <em class="fa fa-file-text-o"></em>
+        &nbsp;&nbsp;&nbsp;&nbsp; JLR &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="javascript:;" (click)="ocultarJlr()">
+          <em class="fa fa-caret-square-o-up"></em>
+        </a>
+      </div>
+      <app-gridview
+        [ExibirBotaoDetalhes]="exibirBotaoDetalhes"
+        [ExibirBotaoDetalhesIcon]="exibirBotaoDetalhesIcon"
+        [NomeModulo]="nomeModulo" 
+        [totalInterna]="visualizarTotalInterna"
+        [totalGeral]="visualizarTotalGeral"
+        [visualizarTotalRegistros]="visualizarTotalRegistros"
+        [PaginaAtual]="paginaAtual"
+        [QuantidadeRegistrosPagina]="quantidadeRegistrosPagina"
+        [Paginacao]="listagemComPaginacao"
+        [Borda]="false"
+        [total_registros]="total_registros"
+
+        [Dados]="dadosJlr"
+        [Estrutura]="estruturaDetalhe"
+        [EstruturaTotal]="estruturaDetalheTotal"
+        [ListagemComFiltros]="listagemComFiltros"  
+        
+        (ver)="ver($event)" 
+        (mudarQuantidadePorPagina)="mudarQuantidadePorPagina($event)" 
+        (mudarPaginaAtual)="mudarPaginaAtual($event)"
+      >
+      </app-gridview>
+    </div>
+  </div>
+</div>

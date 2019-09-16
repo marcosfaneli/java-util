@@ -1,0 +1,33 @@
+<div class="row" style="margin: 3px; font-size: 0.6rem;" *ngIf="comunicado">
+  <div class="w-100" id="assunto" style="border-top: 1px solid #e6e6e6;margin-bottom: 8px; padding-bottom: 4px;">
+    <div>Assunto</div>
+    <span style="font-size: 1.5rem;">{{comunicado.assunto}}</span>
+  </div>
+  <div *ngIf="comunicado.tags.length > 0" class="w-100"
+    style="border-top: 1px solid #e6e6e6;margin-bottom: 8px; padding-bottom: 4px;">
+    <div style="margin: 0px 10px 0px 0px;">Marcadores</div>
+    <span class="badge badge-success" *ngFor="let item of comunicado.tags"
+      style="margin: 2px; font-size: 0.9rem;">{{item}}</span>
+  </div>
+  <div class="w-100" id="mensagem" style="border-top: 1px solid #e6e6e6;margin-bottom: 8px; padding-bottom: 4px;">
+    <div>Mensagem</div>
+    <p style="font-size: 1.2rem; ">
+      {{comunicado.conteudo}}
+    </p>
+  </div>
+  <div class="w-100" id="anexos" style="border-top: 1px solid #e6e6e6;margin-bottom: 8px; padding-bottom: 4px;">
+    <div class="row">
+      <div class="col-md-auto" *ngFor="let item of comunicado.anexos" style="font-size: 1.1rem;">
+        <a (click)="download(item.id)">
+          <i class="fa fa-file-excel-o" aria-hidden="true" *ngIf="'xls_xlsx_csv'.includes(item.tipo)"></i>
+          <i class="fa fa-file-word-o" aria-hidden="true" *ngIf="'doc_docx'.includes(item.tipo)"></i>
+          <i class="fa fa-file-text-o" aria-hidden="true" *ngIf="item.tipo == 'txt'"></i>
+          <i class="fa fa-file-pdf-o" aria-hidden="true" *ngIf="item.tipo == 'pdf'"></i>
+          <i class="fa fa-file-o" aria-hidden="true"
+            *ngIf="!'xls_xlsx_csv_doc_docx_txt_pdf'.includes(item.tipo)"></i>
+          {{item.nome}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
