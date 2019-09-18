@@ -5,13 +5,7 @@
  */
 package br.com.faneli.exemploswing;
 
-import com.sun.java.swing.plaf.windows.WindowsTreeUI;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Collections;
 import java.util.List;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 
 /**
  *
